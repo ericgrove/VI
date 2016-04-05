@@ -1,8 +1,8 @@
 var w = window.innerWidth, h = window.innerHeight;
 
 var svg = d3.select("body").append("svg")
-	.attr("width", w)
-	.attr("height", h)
+	.attr("width", w*0.7)
+	.attr("height", h*0.7)
 	.style("background", "white");
 
 	var buildingColor = "orange";
