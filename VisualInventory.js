@@ -1,9 +1,8 @@
 var w = window.innerWidth, h = window.innerHeight;
 
 var svg = d3.select("body").append("svg")
-	.attr("width", w)
-	.attr("height", h)
-	.attr("viewbox", "0 0 300 270")
+	.attr("width", w*2)
+	.attr("height", h*2)
 	.attr("preserveAspectRatio", "xMidyMid slice")
 	.style("background", "white");
 
@@ -867,6 +866,7 @@ var svg = d3.select("body").append("svg")
 
 		var yesY = IBT0253D53684g.append("text")
 			.text("Y")
+			.attr("class", "answers")
 			.attr("x", 900.37415)
 			.attr("y", 510.35)
 			.attr("fill", "black")
@@ -878,6 +878,7 @@ var svg = d3.select("body").append("svg")
 
 		var noN = IBT0253D53684g.append("text")
 			.text("N")
+			.attr("class", "answers")
 			.attr("x", 996.8728)
 			.attr("y", 509.66257)
 			.attr("fill", "black")
