@@ -1,9 +1,15 @@
 var w = window.innerWidth, h = window.innerHeight;
 
-var svg = d3.select("body").append("svg")
+var svgGlobal = d3.select("body")
+	.append("svg")
 	.attr("width", w*2)
-	.attr("height", h*2)
-	.attr("preserveAspectRatio", "xMidyMid slice")
+	.attr("height", h*2);
+
+var svg = svgGlobal.append("svg")
+	.attr("transform", "scale(0.7)")
+	// .attr("width", w)
+	// .attr("height", h)
+	// .attr("preserveAspectRatio", "xMidyMid slice")
 	.style("background", "white");
 
 	var buildingColor = "orange";
@@ -120,9 +126,9 @@ var svg = d3.select("body").append("svg")
 			d3.selectAll(".floorElement, .roomElement, .deviceElement")
 				.transition()
 				.duration(Dur)
-				.attr("stroke-opacity", 0)
 				.attr("fill-opacity", 0)
-			d3.selectAll(".deviceInfo")
+				.attr("stroke-opacity", 0);
+			d3.selectAll(".deviceInfo, .answers")
 				.transition()
 				.duration(Dur)
 				.attr("opacity", 0);
@@ -712,7 +718,7 @@ var svg = d3.select("body").append("svg")
 						.duration(Dur)
 						.attr("fill-opacity", 1)
 						.attr("stroke-opacity", 1)
-					d3.select("#IBT0253D53684g").selectAll("text")
+					d3.select("#IBT0253D53684g").selectAll(".deviceInfo, .answers")
 						.transition()
 						.duration(Dur)
 						.attr("opacity", 1)
@@ -758,7 +764,7 @@ var svg = d3.select("body").append("svg")
 			.attr("fill-opacity", 0);
 
 		var device = IBT0253D53684g.append("g")
-			.attr("id", "IBT-0253D53684")
+			.attr("id", "IBT0253D53684")
 			.attr("transform", deviceMatrix);
 
 			var devicePath1 = device.append("path")
@@ -837,31 +843,31 @@ var svg = d3.select("body").append("svg")
 			.attr("opacity", 0);
 
 		var yesButton = IBT0253D53684g.append("rect")
-			.attr("class", "yesButton")
+			.attr("class", "yesButton deviceElement")
 			.attr("width", 44.595154)
 			.attr("height", 40.551311)
 			.attr("x", 893.7)
 			.attr("y", 474.74854)
 			.attr("ry", 8.5249891)
 			.attr("fill", "#73ea15")
-			.attr("opacity", 0)
+			.attr("fill-opacity", 0)
 			.on("click", function(){
-				d3.select(this).attr("opacity", 1)
-				d3.select(".noButton").attr("opacity", 0);
+				d3.select(this).attr("fill-opacity", 1)
+				d3.select(".noButton").attr("fill-opacity", 0);
 			});
 
 		var noButton = IBT0253D53684g.append("rect")
-			.attr("class", "noButton")
+			.attr("class", "noButton deviceElement")
 			.attr("width", 44.595154)
 			.attr("height", 40.551311)
-			.attr("x", 992)
+			.attr("x", 991)
 			.attr("y", 474.74854)
 			.attr("ry", 8.5249891)
 			.attr("fill", "#ef4848")
-			.attr("opacity", 0)
+			.attr("fill-opacity", 0)
 			.on("click", function(){
-				d3.select(this).attr("opacity", 1)
-				d3.select(".yesButton").attr("opacity", 0);
+				d3.select(this).attr("fill-opacity", 1)
+				d3.select(".yesButton").attr("fill-opacity", 0);
 			});
 
 		var yesY = IBT0253D53684g.append("text")
