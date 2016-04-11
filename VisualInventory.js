@@ -689,7 +689,7 @@ var svg = svgGlobal.append("svg")
 
 
 		var BT253device = BT253g.append("g")
-			.attr("id", "IBT0253D53684")
+			.attr("id", "IBT0253D56843")
 			.attr("transform", roomDeviceMatrix);
 
 			var BT253devicePath1 = BT253device.append("path")
@@ -705,20 +705,20 @@ var svg = svgGlobal.append("svg")
 				.attr("fill", "#999999")
 				.attr("fill-opacity", 0)
 				.on("click", function(){
-					d3.select("#IBT0253D53684g")
+					d3.select("#IBT0253D56843g")
 						.transition()
 						.duration(Dur)
 						.attr("transform", "matrix(1,0,0,1,18,7)")
-					d3.select("#IBT0253D53684g").selectAll(".background")
+					d3.select("#IBT0253D56843g").selectAll(".background")
 						.transition()
 						.duration(Dur)
 						.attr("fill-opacity", BGopacity)
-					d3.select("#IBT0253D53684g").selectAll("path")
+					d3.select("#IBT0253D56843g").selectAll("path")
 						.transition()
 						.duration(Dur)
 						.attr("fill-opacity", 1)
 						.attr("stroke-opacity", 1)
-					d3.select("#IBT0253D53684g").selectAll(".deviceInfo, .answers")
+					d3.select("#IBT0253D56843g").selectAll(".deviceInfo, .answers")
 						.transition()
 						.duration(Dur)
 						.attr("opacity", 1)
@@ -747,13 +747,13 @@ var svg = svgGlobal.append("svg")
 				.attr("stroke-width", 1);
 
 	// devices
-	var IBT0253D53684g = svg.append("g")
-		.attr("id", "IBT0253D53684g")
+	var IBT0253D56843g = svg.append("g")
+		.attr("id", "IBT0253D56843g")
 		.attr("class", "deviceG")
 		.attr("transform", deviceGthumbMatrix);
 
-		var IBT0253D53684BG = IBT0253D53684g.append("rect")
-			.attr("id", "IBT0253D53684BG")
+		var IBT0253D56843BG = IBT0253D56843g.append("rect")
+			.attr("id", "IBT0253D56843BG")
 			.attr("class", "background")
 			.attr("width", deviceBG.width)
 			.attr("height", deviceBG.height)
@@ -763,8 +763,8 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0);
 
-		var device = IBT0253D53684g.append("g")
-			.attr("id", "IBT0253D53684")
+		var device = IBT0253D56843g.append("g")
+			.attr("id", "IBT0253D56843")
 			.attr("transform", deviceMatrix);
 
 			var devicePath1 = device.append("path")
@@ -794,8 +794,8 @@ var svg = svgGlobal.append("svg")
 				.attr("stroke-opacity", 0)
 				.attr("stroke-width", 1);
 
-		var deviceName = IBT0253D53684g.append("text")
-			.text("I-BT0253-D53684")
+		var deviceName = IBT0253D56843g.append("text")
+			.text("I-BT0253-D56843")
 			.attr("class", "deviceInfo")
 			.attr("id", "deviceNameText")
 			.attr("pointer-events", "none")
@@ -806,7 +806,7 @@ var svg = svgGlobal.append("svg")
 			.attr("font-weight", "bold")
 			.attr("opacity", 0);
 
-		var deviceModelOS = IBT0253D53684g.append("text")
+		var deviceModelOS = IBT0253D56843g.append("text")
 			.text("7010 Windows 7")
 			.attr("class", "deviceInfo")
 			.attr("id", "deviceModelText")
@@ -818,7 +818,7 @@ var svg = svgGlobal.append("svg")
 			.attr("font-weight", "bold")
 			.attr("opacity", 0);
 
-		var issues = IBT0253D53684g.append("text")
+		var issues = IBT0253D56843g.append("text")
 			.text("Issues:")
 			.attr("class", "deviceInfo")
 			.attr("id", "deviceIssuesText")
@@ -831,7 +831,7 @@ var svg = svgGlobal.append("svg")
 			.attr("font-style", "italic")
 			.attr("opacity", 0);
 
-		var issuesItem1 = IBT0253D53684g.append("text")
+		var issuesItem1 = IBT0253D56843g.append("text")
 			.text("Inventoried?")
 			.attr("class", "deviceInfo")
 			.attr("id", "deviceIssuesItemText")
@@ -842,7 +842,7 @@ var svg = svgGlobal.append("svg")
 			.attr("font-size", "40px")
 			.attr("opacity", 0);
 
-		var yesButton = IBT0253D53684g.append("rect")
+		var yesButton = IBT0253D56843g.append("rect")
 			.attr("class", "yesButton deviceElement")
 			.attr("width", 44.595154)
 			.attr("height", 40.551311)
@@ -856,7 +856,7 @@ var svg = svgGlobal.append("svg")
 				d3.select(".noButton").attr("fill-opacity", 0);
 			});
 
-		var noButton = IBT0253D53684g.append("rect")
+		var noButton = IBT0253D56843g.append("rect")
 			.attr("class", "noButton deviceElement")
 			.attr("width", 44.595154)
 			.attr("height", 40.551311)
@@ -870,7 +870,7 @@ var svg = svgGlobal.append("svg")
 				d3.select(".yesButton").attr("fill-opacity", 0);
 			});
 
-		var yesY = IBT0253D53684g.append("text")
+		var yesY = IBT0253D56843g.append("text")
 			.text("Y")
 			.attr("class", "answers")
 			.attr("x", 900.37415)
@@ -882,7 +882,7 @@ var svg = svgGlobal.append("svg")
 			.attr("pointer-events", "none")
 			.attr("opacity", 0);
 
-		var noN = IBT0253D53684g.append("text")
+		var noN = IBT0253D56843g.append("text")
 			.text("N")
 			.attr("class", "answers")
 			.attr("x", 996.8728)
