@@ -6,57 +6,72 @@ var svgGlobal = d3.select("body")
 	.attr("height", h*2);
 
 var svg = svgGlobal.append("svg")
-	.attr("transform", "scale(0.7)")
-	// .attr("width", w)
-	// .attr("height", h)
-	// .attr("preserveAspectRatio", "xMidyMid slice")
+	.attr("transform", "scale(0.75)")
 	.style("background", "white");
 
 	var buildingColor = "orange";
-	var deviceColor = "gray";
-	var Dur = 570;
-	var BGopacity = 0.33700005;
-	var thumbOpacity = 0.5;
+	var deviceColor = 	"gray";
+	var Dur = 			570;
+	var BGopacity = 	0.3;
+	var thumbOpacity = 	0.5;
 
 	// backgrounds
+		var mapBG = {
+			width: 	1135.4667,
+			height: 864.26593,
+			x: 		231.31741,
+			y: 		165.85028,
+			ry: 	35.762733
+			};
+		var SFBG = {
+			width: 	344.09805,
+			height: 863.18353,
+			x: 		426.793,
+			y: 		165.85027,
+			ry: 	35.717941
+			};
 		var roomBG = {
-			x: 413.47556,
-			y: 27,
-			width: 743.55707,
+			width: 	743.55707,
 			height: 863.49524,
-			ry: 35.730835
+			x: 		413.47556,
+			y: 		27,
+			ry: 	35.730835
 			};
 		var deviceBG = {
-			x: 21.324184,
-			y: 178.39192,
-			width: 1130.7183,
+			width: 	1130.7183,
 			height: 704.79163,
-			ry: 29.163792
+			x: 		21.324184,
+			y: 		178.39192,
+			ry: 	29.163792
 			};
-		var mapBG = {
-			x: 231.31741,
-			y: 165.85028,
-			width: 1135.4667,
-			height: 864.26593,
-			ry: 35.762733
-			};
-
+		
 	// paths
 	
-	// matrices
-		var CampusMapGthumbMatrix = "matrix(0.1642203,0,0,0.1642203,0,0)";
-		var SFgThumbMatrix = "matrix(0.16425702,0,0,0.16425702,170.08221,0.714847)";
-		var floorGthumbMatrix = "matrix(0.16477916,0,0,0.16477916,230,0)";
-		var roomGthumbMatrix = "matrix(0.16488074,0,0,0.16488074,380,23)";
-		var deviceGthumbMatrix = "matrix(0.09436181,0,0,0.09436181,40,161.55854)";
+	// fullscreen matrices
+		var CampusMapGfullMatrix = 		"matrix(1,0,0,1,-190,-140)"
+		var SFgFullMatrix = 			"matrix(1,0,0,1,-180,-140)";
+		var BTSFGfullMatrix =			"matrix(1,0,0,1,-180,-140)"
+		var floorGfullMatrix = 			"matrix(1,0,0,1,-180,-140)";
+		var roomGfullMatrix = 			"matrix(1,0,0,1,34,0)";
+		var IBT0253D56843gFullMatrix = 	"matrix(1,0,0,1,18,7)";
+		var deviceGfullMatrix = 		"matrix(1,0,0,1,18,7)";
 
-		var roomDeviceMatrix = "matrix(0.2258128,0,0,0.2258128,531.70261,287.10811)";
-		var deviceMatrix = "matrix(1.157551,0,0,1.0770259,79.525472,254.61494)";
+	// thumb matrices
+		var CampusMapGthumbMatrix = 	"matrix(0.1642,0,0,0.1642,0,0)";
+		var SFgThumbMatrix = 			"matrix(0.1642,0,0,0.1642,170,0)";
+		var floorGthumbMatrix = 		"matrix(0.1642,0,0,0.1642,230,0)";
+		var roomGthumbMatrix = 			"matrix(0.1642,0,0,0.1642,380,23)";
+		var deviceGthumbMatrix = 		"matrix(0.09436181,0,0,0.09436181,40,161.55854)";
+
+	// roomDevice and device matrices
+		var BT253roomDeviceMatrix = 	"matrix(0.2258128,0,0,0.2258128,531.70261,287.10811)";
+		var LB221roomDeviceMatrix= 		"matrix(0.2258128,0,0,0.2258128,950.58104,211.712)";
+		var deviceMatrix = 				"matrix(1.157551,0,0,1.0770259,79.525472,254.61494)";
 
 	// Campus Map
 	var CampusMap = svg.append("g")
 		.attr("id", "CampusMap")
-		.attr("transform", "matrix(1,0,0,1,-190,-137)");
+		.attr("transform", CampusMapGfullMatrix);
 
 		var CampusMapBG = CampusMap.append("rect")
 			.attr("id", "CampusMapBG")
@@ -90,7 +105,7 @@ var svg = svgGlobal.append("svg")
 			d3.select("#CampusMap")
 				.transition()
 				.duration(Dur)
-				.attr("transform", "matrix(1,0,0,1,-190,-137)")
+				.attr("transform", CampusMapGfullMatrix)
 			d3.selectAll(".MAPbuilding")
 				.transition()
 				.duration(Dur)
@@ -137,7 +152,7 @@ var svg = svgGlobal.append("svg")
 		var MAPHAg = CampusMap.append("g")
 			.attr("id", "MAPHAg");
 
-			var MAPHApath = "m 573.84831,303.30519 52.76971,-9.38805 5.62896,35.93913 94.93428,-13.37276 1.67548,12.11134 14.34496,-2.47245 7.92618,44.19776 -101.72387,19.57303 7.16646,44.53623 -52.57522,9.46966 -15.45632,-90.93037 -6.8088,1.39944 z";
+				var MAPHApath = "m 573.84831,303.30519 52.76971,-9.38805 5.62896,35.93913 94.93428,-13.37276 1.67548,12.11134 14.34496,-2.47245 7.92618,44.19776 -101.72387,19.57303 7.16646,44.53623 -52.57522,9.46966 -15.45632,-90.93037 -6.8088,1.39944 z";
 
 				var MAPHA = MAPHAg.append("path")
 					.attr("d", MAPHApath)
@@ -206,7 +221,7 @@ var svg = svgGlobal.append("svg")
 					d3.select("#SFBTg")
 						.transition()
 						.duration(Dur)
-						.attr("transform", "matrix(1,0,0,1,-187,-136)")
+						.attr("transform", BTSFGfullMatrix)
 					d3.select("#SFBTBG")
 						.transition()
 						.duration(Dur)
@@ -333,7 +348,19 @@ var svg = svgGlobal.append("svg")
 				.attr("fill", buildingColor)
 				.attr("fill-opacity", 1)
 				.on("click", function(){
-					return CMtoThumb();
+					CMtoThumb()
+					d3.select("#SFLBg")
+						.transition()
+						.duration(Dur)
+						.attr("transform", BTSFGfullMatrix)
+					d3.select("#SFLBBG")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", BGopacity)
+					d3.select("#SFLBg").selectAll(".SFelement")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", 1);
 				});
 
 			var MAPLBlabel = MAPLBg.append("text")
@@ -536,11 +563,11 @@ var svg = svgGlobal.append("svg")
 		var SFBTBG = SFBTg.append("rect")
 			.attr("id", "SFBTBG")
 			.attr("class", "background")
-			.attr("width", 344.09805)
-			.attr("height", 863.18353)
-			.attr("x", 426.793)
-			.attr("y", 165.85027)
-			.attr("ry", 35.717941)
+			.attr("width", SFBG.width)
+			.attr("height", SFBG.height)
+			.attr("x", SFBG.x)
+			.attr("y", SFBG.y)
+			.attr("ry", SFBG.ry)
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
@@ -553,7 +580,37 @@ var svg = svgGlobal.append("svg")
 			.attr("class", "SFelement")
 			.attr("d", "m 653.01207,739.68849 1.714,18.42514 8.56986,-1.71395 11.56916,68.98705 -24.42395,3.85648 7.07006,35.35046 11.14076,-1.07123 7.92712,44.34885 -8.9983,3.21367 1.07118,11.99777 25.49525,-4.28493 8.99836,51.84745 -14.56875,3.42795 0.42852,12.21198 -53.98988,6.42733 -4.28494,-23.35277 -14.14017,1.714 -1.71396,-4.28493 -72.415,11.1408 -5.99893,-23.13854 -39.42106,10.06958 -5.57048,-16.49695 -1.92824,-14.35445 -1.07118,-9.64109 40.27817,-8.14129 -4.28498,-26.13795 77.55695,-17.13968 1.71395,7.4986 13.069,-3.21366 -6.21313,-38.99271 -11.56925,2.1425 -11.99777,-66.41612 3.85644,-2.14248 -5.1419,-22.28156 z")
 			.attr("fill", buildingColor)
-			.attr("fill-opacity", 0);
+			.attr("fill-opacity", 0)
+			.on("click", function(){
+				console.log("hi")
+				d3.select("#BT1g")
+					.transition()
+					.duration(Dur)
+					.attr("transform", floorGfullMatrix)
+				d3.select("#BT1BG")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", BGopacity)
+				d3.select("#BT1g").selectAll(".floorRoom")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", 0.3)
+					.attr("stroke-opacity", 0.6)
+				d3.select("#BT1g").selectAll(".floorElement")
+					.transition()
+					.duration(Dur)
+					.attr("stroke-opacity", 1)
+					.attr("fill-opacity", 1)
+				d3.select("#SFBTg")
+					.transition()
+					.duration(Dur)
+					.attr("transform", SFgThumbMatrix)
+				d3.select("#SFBTg").selectAll(".SFelement")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", thumbOpacity)
+				;
+			});
 
 		var SFBT02 = SFBTg.append("path")
 			.attr("class", "SFelement")
@@ -565,7 +622,7 @@ var svg = svgGlobal.append("svg")
 				d3.select("#BT2g")
 					.transition()
 					.duration(Dur)
-					.attr("transform", "matrix(1,0,0,1,-180,-140)")
+					.attr("transform", floorGfullMatrix)
 				d3.select("#BT2BG")
 					.transition()
 					.duration(Dur)
@@ -597,11 +654,77 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", buildingColor)
 			.attr("fill-opacity", 0);
 
+	var SFLBg = svg.append("g")
+		.attr("id", "SFLBg")
+		.attr("class", "SFg")
+		.attr("transform", SFgThumbMatrix);
+
+		var SFLBBG = SFLBg.append("rect")
+			.attr("id", "SFLBBG")
+			.attr("class", "background")
+			.attr("width", SFBG.width)
+			.attr("height", SFBG.height)
+			.attr("x", SFBG.x)
+			.attr("y", SFBG.y)
+			.attr("ry", SFBG.ry)
+			.attr("fill", "gray")
+			.attr("fill-opacity", 0)
+			.on("click", function(){
+				// SFLBg to full
+				// 
+			});
+
+		var SFLBfloorOffset = SFLBg.append("g")
+			.attr("transform", "translate(212,150)");
+
+			var SFLB01 = SFLBfloorOffset.append("path")
+				.attr("id", "SFLB01")
+				.attr("class", "SFelement")
+				.attr("d", "m 325.96662,480.94772 c 47.75357,-10.74989 65.34928,39.44159 65.34928,39.44159 l 8.89372,38.28157 58.77571,-11.60049 14.69392,16.24064 2.7068,19.33417 7.34693,-1.54676 7.34695,26.6811 -6.18696,3.48015 8.12036,38.2815 -30.93458,8.89372 1.16009,6.9603 7.73361,-1.16009 15.08063,61.86917 -8.12031,3.48017 4.2535,20.88082 -98.21734,22.81422 5.02692,26.29444 -8.89367,3.09341 -6.57364,-25.13432 -39.44158,8.12034 -51.81546,-241.67642 c 0,0 -4.05848,-52.27935 43.69512,-63.02923 z")
+				.attr("fill", buildingColor)
+				.attr("fill-opacity", 0);
+
+			var SFLB02 = SFLBfloorOffset.append("path")
+				.attr("class", "SFelement")
+				.attr("d", "m 325.96662,91.947725 c 47.75357,-10.749892 65.34928,39.441585 65.34928,39.441585 l 8.89372,38.28157 58.77571,-11.60049 14.69392,16.24064 2.7068,19.33417 7.34693,-1.54676 7.34695,26.6811 -6.18696,3.48015 8.12036,38.2815 -30.93458,8.89372 1.16009,6.9603 7.73361,-1.16009 15.08063,61.86917 -8.12031,3.48017 4.2535,20.88082 -98.21734,22.81422 5.02692,26.29444 -8.89367,3.09341 -6.57364,-25.13432 -39.44158,8.12034 -51.81546,-241.67642 c 0,0 -4.05848,-52.27935 43.69512,-63.029225 z")
+				.attr("fill", buildingColor)
+				.attr("fill-opacity", 0)
+				.on("click", function(){
+					console.log("hi")
+					d3.select("#LB2g")
+						.transition()
+						.duration(Dur)
+						.attr("transform", floorGfullMatrix)
+					d3.select("#LB2BG")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", BGopacity)
+					d3.select("#LB2g").selectAll(".floorRoom")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", 0.3)
+						.attr("stroke-opacity", 0.6)
+					d3.select("#LB2g").selectAll(".floorElement")
+						.transition()
+						.duration(Dur)
+						.attr("stroke-opacity", 1)
+						.attr("fill-opacity", 1)
+					d3.select("#SFLBg")
+						.transition()
+						.duration(Dur)
+						.attr("transform", SFgThumbMatrix)
+					d3.select("#SFLBg").selectAll(".SFelement")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", thumbOpacity)
+					;
+				});
+
 	// floors
 	var BT2g = svg.append("g")
 		.attr("id", "BT2g")
 		.attr("class", "floorG")
-		.attr("transform", "matrix(0.16477916,0,0,0.16477916,230,0)");
+		.attr("transform", floorGthumbMatrix);
 
 		var BT2BG = BT2g.append("rect")
 			.attr("id", "BT2BG")
@@ -634,7 +757,7 @@ var svg = svgGlobal.append("svg")
 				d3.select("#BT253g")
 					.transition()
 					.duration(Dur)
-					.attr("transform", "matrix(1,0,0,1,34,0)")
+					.attr("transform", roomGfullMatrix)
 				d3.select("#BT253g").selectAll(".roomElement")
 					.transition()
 					.duration(Dur)
@@ -647,12 +770,76 @@ var svg = svgGlobal.append("svg")
 				d3.select("#BT2g")
 					.transition()
 					.duration(Dur)
-					.attr("transform", "matrix(0.16477916,0,0,0.16477916,230,0)")
+					.attr("transform", floorGthumbMatrix)
 				d3.select("#BT2g").selectAll(".floorElement")
 					.transition()
 					.duration(Dur)
 					.attr("fill-opacity", thumbOpacity)
 				d3.select("#BT2g").selectAll(".floorRoom")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", 0)
+					.attr("stroke-opacity", 0);
+			});
+
+	var LB2g = svg.append("g")
+		.attr("id", "LB2g")
+		.attr("class", "floorG")
+		.attr("transform", floorGthumbMatrix);
+
+		var LB2BG = LB2g.append("rect")
+			.attr("id", "LB2BG")
+			.attr("class", "background")
+			.attr("width", 746.11609)
+			.attr("height", 863.18353)
+			.attr("x", 492.79297)
+			.attr("y", 165.85027)
+			.attr("ry", 35.717941)
+			.attr("fill", "gray")
+			.attr("fill-opacity", 0);
+
+		var LB2parent = LB2g.append("g")
+			.attr("transform", "translate(212,150)");
+
+		var LB2 = LB2parent.append("path")
+			.attr("id", "LB2")
+			.attr("class", "floorElement")
+			.attr("d", "M 507.70557,69.845152 C 621.64553,44.195926 663.62888,163.95274 663.62888,163.95274 l 21.22041,91.33979 140.23878,-27.67876 35.05968,38.75015 6.45842,46.13131 17.52977,-3.69056 17.52981,63.66107 -14.76208,8.30364 19.37517,91.33962 -73.80987,21.2204 2.76797,16.60727 18.45239,-2.76797 35.98236,147.61977 -19.37505,8.30369 10.14885,49.82161 -234.34647,54.43471 11.99422,62.7385 -21.22028,7.38087 -15.6847,-59.97046 -94.10757,19.37513 -123.63164,-576.63969 c 0,0 -9.68352,-124.738476 104.25652,-150.387678 z")
+			.attr("fill", buildingColor)
+			.attr("fill-opacity", 0);
+
+		var LB221FloorRoom = LB2parent.append("path")
+			.attr("id", "LB221floorRoom")
+			.attr("class", "floorElement")
+			.attr("d", "m 524.2267,284.70008 9.55395,52.35317 66.1949,-12.3808 -8.18914,-51.99947 z")
+			.attr("fill", buildingColor)
+			.attr("fill-opacity", 0)
+			.attr("stroke", "black")
+			.attr("stroke-width", 6)
+			.attr("stroke-opacity", 0)
+			.on("click", function(){
+				d3.select("#LB221g")
+					.transition()
+					.duration(Dur)
+					.attr("transform", roomGfullMatrix)
+				d3.select("#LB221g").selectAll(".roomElement")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", 1)
+					.attr("stroke-opacity", 1)
+				d3.select("#LB221g").select(".background")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", BGopacity)
+				d3.select("#LB2g")
+					.transition()
+					.duration(Dur)
+					.attr("transform", floorGthumbMatrix)
+				d3.select("#LB2g").selectAll(".floorElement")
+					.transition()
+					.duration(Dur)
+					.attr("fill-opacity", thumbOpacity)
+				d3.select("#LB2g").selectAll(".floorRoom")
 					.transition()
 					.duration(Dur)
 					.attr("fill-opacity", 0)
@@ -690,7 +877,7 @@ var svg = svgGlobal.append("svg")
 
 		var BT253device = BT253g.append("g")
 			.attr("id", "IBT0253D56843")
-			.attr("transform", roomDeviceMatrix);
+			.attr("transform", BT253roomDeviceMatrix);
 
 			var BT253devicePath1 = BT253device.append("path")
 				.attr("class", "roomElement")
@@ -708,7 +895,7 @@ var svg = svgGlobal.append("svg")
 					d3.select("#IBT0253D56843g")
 						.transition()
 						.duration(Dur)
-						.attr("transform", "matrix(1,0,0,1,18,7)")
+						.attr("transform", deviceGfullMatrix)
 					d3.select("#IBT0253D56843g").selectAll(".background")
 						.transition()
 						.duration(Dur)
@@ -739,6 +926,92 @@ var svg = svgGlobal.append("svg")
 				.attr("stroke-opacity", 0)
 				.attr("stroke-width", 1);
 			var BT253devicePath6 = BT253device.append("path")
+				.attr("class", "roomElement")
+				.attr("d", "m 56.382192,195.78672 95.958128,0")
+				.attr("fill", "none")
+				.attr("stroke", "black")
+				.attr("stroke-opacity", 0)
+				.attr("stroke-width", 1);
+
+	var LB221g = svg.append("g")
+		.attr("id", "LB221g")
+		.attr("class", "roomG")
+		.attr("transform", roomGthumbMatrix);
+
+		var LB221BG = LB221g.append("rect")
+			.attr("id", "LB221BG")
+			.attr("class", "background")
+			.attr("width", roomBG.width)
+			.attr("height", roomBG.height)
+			.attr("x", roomBG.x)
+			.attr("y", roomBG.y)
+			.attr("ry", roomBG.ry)
+			.attr("fill", "gray")
+			.attr("fill-opacity", 0)
+			.on("click", function(){
+				console.log("hi3")
+			});
+
+		var LB221 = LB221g.append("path")
+			.attr("id", "LB221")
+			.attr("class", "roomElement")
+			.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
+			.attr("fill", buildingColor)
+			.attr("fill-opacity", 0)
+			.attr("stroke-width", 1);
+
+
+		var LB221device = LB221g.append("g")
+			.attr("id", "IBT0253D56843")
+			.attr("transform", LB221roomDeviceMatrix);
+
+			var LB221devicePath1 = LB221device.append("path")
+				.attr("class", "roomElement")
+				.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+				.attr("fill", "none")
+				.attr("stroke", "black")
+				.attr("stroke-opacity", 0)
+				.attr("stroke-width", 1);
+			var LB221devicePath2 = LB221device.append("path")
+				.attr("class", "roomElement")
+				.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+				.attr("fill", "#999999")
+				.attr("fill-opacity", 0)
+				.on("click", function(){
+					d3.select("#IBT0253D56843g")
+						.transition()
+						.duration(Dur)
+						.attr("transform", deviceGfullMatrix)
+					d3.select("#IBT0253D56843g").selectAll(".background")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", BGopacity)
+					d3.select("#IBT0253D56843g").selectAll("path")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", 1)
+						.attr("stroke-opacity", 1)
+					d3.select("#IBT0253D56843g").selectAll(".deviceInfo, .answers")
+						.transition()
+						.duration(Dur)
+						.attr("opacity", 1)
+					d3.select("#LB221g")
+						.transition()
+						.duration(Dur)
+						.attr("transform", roomGthumbMatrix)
+					d3.select("#LB221g").selectAll("path")
+						.transition()
+						.duration(Dur)
+						.attr("fill-opacity", thumbOpacity);
+				});
+			var LB221devicePath3 = LB221device.append("path")
+				.attr("class", "roomElement")
+				.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+				.attr("fill", "none")
+				.attr("stroke", "black")
+				.attr("stroke-opacity", 0)
+				.attr("stroke-width", 1);
+			var LB221devicePath6 = LB221device.append("path")
 				.attr("class", "roomElement")
 				.attr("d", "m 56.382192,195.78672 95.958128,0")
 				.attr("fill", "none")
