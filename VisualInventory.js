@@ -49,12 +49,10 @@ var svg = svgGlobal.append("svg")
 	// paths
 	
 	// fullscreen matrices
-		var CampusMapGfullMatrix = 		"matrix(1,0,0,1,-190,-140)"
+		var CampusMapGfullMatrix = 		"matrix(1,0,0,1,-190,-140)";
 		var SFgFullMatrix = 			"matrix(1,0,0,1,-180,-140)";
-		var BTSFGfullMatrix =			"matrix(1,0,0,1,-180,-140)"
 		var floorGfullMatrix = 			"matrix(1,0,0,1,-180,-140)";
 		var roomGfullMatrix = 			"matrix(1,0,0,1,34,0)";
-		var IBT0253D56843gFullMatrix = 	"matrix(1,0,0,1,18,7)";
 		var deviceGfullMatrix = 		"matrix(1,0,0,1,18,7)";
 
 	// thumb matrices
@@ -69,6 +67,23 @@ var svg = svgGlobal.append("svg")
 		var BT115roomDeviceMatrix =		"matrix(0.2258128,0,0,0.2258128,531.70261,287.10811)";
 		var LB221roomDeviceMatrix= 		"matrix(0.2258128,0,0,0.2258128,950.58104,211.712)";
 		var deviceMatrix = 				"matrix(1.157551,0,0,1.0770259,79.525472,254.61494)";
+
+	// buttons
+		var yesButtonD = {
+			width: 79.786247,
+			height: 72.551315,
+			x: 874.55457,
+			y: 458.74854,
+			ry: 8.5249891,
+		};
+
+		var noButtonD = {
+			width: 79.786247,
+			height: 72.551315,
+			x: 973.55457,
+			y: 458.74854,
+			ry: 8.5249891,
+		};
 
 	// Campus Map
 	var CampusMap = svg.append("g")
@@ -222,7 +237,7 @@ var svg = svgGlobal.append("svg")
 					d3.select("#SFBTg")
 						.transition()
 						.duration(Dur)
-						.attr("transform", BTSFGfullMatrix)
+						.attr("transform", SFgFullMatrix)
 					d3.select("#SFBTBG")
 						.transition()
 						.duration(Dur)
@@ -355,7 +370,7 @@ var svg = svgGlobal.append("svg")
 					d3.select("#SFLBg")
 						.transition()
 						.duration(Dur)
-						.attr("transform", BTSFGfullMatrix)
+						.attr("transform", SFgFullMatrix)
 					d3.select("#SFLBBG")
 						.transition()
 						.duration(Dur)
@@ -576,7 +591,6 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
-				console.log("sdf")
 				d3.select("#SFBTg")
 					.transition()
 					.duration(Dur)
@@ -648,13 +662,18 @@ var svg = svgGlobal.append("svg")
 					.attr("pointer-events", "auto");
 			});
 
+		var BT01Label = SFBTg.append("text")
+			.text("1")
+			.attr("x", 610.58026)
+			.attr("y", 935.08148);
+		
+
 		var SFBT02 = SFBTg.append("path")
 			.attr("class", "SFelement")
 			.attr("d", "m 653.01207,472.90807 1.714,18.42506 8.56986,-1.71391 11.56916,68.98704 -24.42395,3.85645 7.07006,35.35045 11.14076,-1.07118 7.92712,44.34885 -8.9983,3.21366 1.07118,11.99778 25.49525,-4.28494 8.99836,51.84742 -14.56875,3.42799 0.42852,12.21193 -53.98988,6.42742 -4.28494,-23.35277 -14.14017,1.71395 -1.71396,-4.28497 -72.415,11.14084 -5.99893,-23.13856 -39.42106,10.06956 -5.57048,-16.4969 -1.92824,-14.35446 -1.07118,-9.64109 40.27817,-8.14129 -4.28498,-26.13798 77.55695,-17.13964 1.71395,7.49855 13.069,-3.21366 -6.21313,-38.9927 -11.56925,2.14248 -11.99777,-66.41611 3.85644,-2.14244 -5.1419,-22.28155 z")
 			.attr("fill", buildingColor)
 			.attr("fill-opacity", 0)
 			.on("click", function(){
-				console.log("hi")
 				d3.select("#BT2g")
 					.transition()
 					.duration(Dur)
@@ -996,7 +1015,6 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
-				console.log("hi3")
 			});
 
 		var BT115 = BT115g.append("path")
@@ -1082,7 +1100,6 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
-				console.log("hi3")
 			});
 
 		var BT253 = BT253g.append("path")
@@ -1167,7 +1184,6 @@ var svg = svgGlobal.append("svg")
 			.attr("fill", "gray")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
-				console.log("hi3")
 			});
 
 		var LB221 = LB221g.append("path")
@@ -1334,30 +1350,30 @@ var svg = svgGlobal.append("svg")
 
 		var yesButton = IBT0115Dxxxxxg.append("rect")
 			.attr("class", "yesButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 893.7)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", yesButtonD.width)
+			.attr("height", yesButtonD.height)
+			.attr("x", yesButtonD.x)
+			.attr("y", yesButtonD.y)
+			.attr("ry", yesButtonD.ry)
 			.attr("fill", "#73ea15")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".noButton").attr("fill-opacity", 0);
+				d3.selectAll(".noButton").attr("fill-opacity", 0);
 			});
 
 		var noButton = IBT0115Dxxxxxg.append("rect")
 			.attr("class", "noButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 991)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", noButtonD.width)
+			.attr("height", noButtonD.height)
+			.attr("x", noButtonD.x)
+			.attr("y", noButtonD.y)
+			.attr("ry", noButtonD.ry)
 			.attr("fill", "#ef4848")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".yesButton").attr("fill-opacity", 0);
+				d3.selectAll(".yesButton").attr("fill-opacity", 0);
 			});
 
 		var yesY = IBT0115Dxxxxxg.append("text")
@@ -1481,30 +1497,30 @@ var svg = svgGlobal.append("svg")
 
 		var yesButton = IBT0253D56843g.append("rect")
 			.attr("class", "yesButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 893.7)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", yesButtonD.width)
+			.attr("height", yesButtonD.height)
+			.attr("x", yesButtonD.x)
+			.attr("y", yesButtonD.y)
+			.attr("ry", yesButtonD.ry)
 			.attr("fill", "#73ea15")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".noButton").attr("fill-opacity", 0);
+				d3.selectAll(".noButton").attr("fill-opacity", 0);
 			});
 
 		var noButton = IBT0253D56843g.append("rect")
 			.attr("class", "noButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 991)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", noButtonD.width)
+			.attr("height", noButtonD.height)
+			.attr("x", noButtonD.x)
+			.attr("y", noButtonD.y)
+			.attr("ry", noButtonD.ry)
 			.attr("fill", "#ef4848")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".yesButton").attr("fill-opacity", 0);
+				d3.selectAll(".yesButton").attr("fill-opacity", 0);
 			});
 
 		var yesY = IBT0253D56843g.append("text")
@@ -1591,7 +1607,7 @@ var svg = svgGlobal.append("svg")
 			.attr("fill-opacity", 0);
 
 		var deviceModelOS = ILB0221Dxxxxxg.append("text")
-			.text("7010 Windows 7")
+			.text("8811 XP")
 			.attr("class", "text")
 			.attr("id", "deviceModelText")
 			.attr("pointer-events", "none")
@@ -1628,30 +1644,30 @@ var svg = svgGlobal.append("svg")
 
 		var yesButton = ILB0221Dxxxxxg.append("rect")
 			.attr("class", "yesButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 893.7)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", yesButtonD.width)
+			.attr("height", yesButtonD.height)
+			.attr("x", yesButtonD.x)
+			.attr("y", yesButtonD.y)
+			.attr("ry", yesButtonD.ry)
 			.attr("fill", "#73ea15")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".noButton").attr("fill-opacity", 0);
+				d3.selectAll(".noButton").attr("fill-opacity", 0);
 			});
 
 		var noButton = ILB0221Dxxxxxg.append("rect")
 			.attr("class", "noButton deviceElement")
-			.attr("width", 44.595154)
-			.attr("height", 40.551311)
-			.attr("x", 991)
-			.attr("y", 474.74854)
-			.attr("ry", 8.5249891)
+			.attr("width", noButtonD.width)
+			.attr("height", noButtonD.height)
+			.attr("x", noButtonD.x)
+			.attr("y", noButtonD.y)
+			.attr("ry", noButtonD.ry)
 			.attr("fill", "#ef4848")
 			.attr("fill-opacity", 0)
 			.on("click", function(){
 				d3.select(this).attr("fill-opacity", 1)
-				d3.select(".yesButton").attr("fill-opacity", 0);
+				d3.selectAll(".yesButton").attr("fill-opacity", 0);
 			});
 
 		var yesY = ILB0221Dxxxxxg.append("text")
