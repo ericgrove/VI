@@ -906,14 +906,8 @@ var svgGlobal = d3.select("body")
 					.attr("stroke-width", 6)
 					.attr("stroke-opacity", 0)
 					.on("click", function(){
-						groupMatrix("#LB221g", roomGFullMatrix)
-						fadeUpPaths("#LB221g")
-						d3.select("#LB221g").select(".background")
-							.transition()
-							.duration(Dur)
-							.attr("fill-opacity", BGopacity)
-						groupMatrix("#LB2g", floorGThumbMatrix)
-						fadeDownPaths("#LB2g");
+						groupFull("#LB221g", roomGFullMatrix)
+						groupDown("#LB2g", floorGThumbMatrix);
 					});
 
 		// rooms
