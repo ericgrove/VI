@@ -103,8 +103,7 @@ var svgGlobal = d3.select("body")
 					.transition()
 					.duration(Dur)
 					.attr("fill-opacity", 0)
-					.attr("stroke-opacity", 0)
-					.attr("pointer-events", "none");
+					.attr("stroke-opacity", 0);
 				}
 
 			// path functions
@@ -199,19 +198,20 @@ var svgGlobal = d3.select("body")
 					groupMatrix(group, fullMatrix)
 					fadeUpBackground(group)
 					fadeUpPaths(group)
-					fadeUpText(group)
-					d3.select(group).selectAll("rect")
-						.attr("pointer-events", "auto")
+					fadeUpText(group);
 					};
 
 				var groupDown = function(group, thumbMatrix){
 					groupMatrix(group, thumbMatrix)
 					fadeDownBackground(group)
 					fadeDownPaths(group)
-					fadeDownText(group)
-					d3.select(group).selectAll("rect")
-						.attr("pointer-events", "none")
+					fadeDownText(group);
 					};
+
+				var fadeOutSFG = function(){
+					groupMatrix(".SFg", SFgThumbMatrix)
+					fadeOut(".SFbackground, .SFelement");
+					};					
 
 				var fadeOutFloorG = function(){
 					groupMatrix(".floorG", floorGThumbMatrix)
@@ -248,19 +248,15 @@ var svgGlobal = d3.select("body")
 					});
 
 				var CMtoThumb = function(){
-					groupMatrix("#CampusMap", CampusMapGThumbMatrix)
-					fadeDownPaths("#CampusMap")
-					fadeDownText("#CampusMap");
+					groupDown("#CampusMap", CampusMapGThumbMatrix);
 					};
 
 				var CMtoFull = function(){
 					groupFull("#CampusMap", CampusMapGFullMatrix)
-					groupMatrix(".SFg", SFgThumbMatrix)
-					groupMatrix(".floorG", floorGThumbMatrix)
-					groupMatrix(".roomG", roomGThumbMatrix)
-					groupMatrix(".deviceG", deviceGThumbMatrix)
-					fadeOut(".SFbackground, .floorBackground, .roomBackground, .deviceBackground")
-					fadeOut(".SFelement, .floorElement, .roomElement, .deviceElement");
+					fadeOutSFG()
+					fadeOutFloorG()
+					fadeOutRoomG()
+					fadeOutDeviceG();
 					};
 
 				var MAPHAg = CampusMap.append("g")
@@ -275,7 +271,7 @@ var svgGlobal = d3.select("body")
 							.attr("fill", buildingColor)
 							.attr("fill-opacity", 1)
 							.on("click", function(){
-								return CMtoThumb();
+								CMtoThumb();
 							});
 
 					var MAPHAlabel = MAPHAg.append("text")
@@ -303,7 +299,7 @@ var svgGlobal = d3.select("body")
 							.attr("fill", buildingColor)
 							.attr("fill-opacity", 1)
 							.on("click", function(){
-								return CMtoThumb();
+								CMtoThumb();
 							});
 
 					var MAPRClabel = MAPRCg.append("text")
@@ -332,18 +328,7 @@ var svgGlobal = d3.select("body")
 						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb()
-							groupMatrix("#SFBTg", SFgFullMatrix)
-							// d3.select("#SFBTg")
-							// 	.transition()
-							// 	.duration(Dur)
-							// 	.attr("transform", SFgFullMatrix)
-							d3.select("#SFBTBG")
-								.transition()
-								.duration(Dur)
-								.attr("fill-opacity", BGopacity)
-								.attr("pointer-events", "none")
-							fadeUpPaths("#SFBTg")
-							fadeUpText("#SFBTg");
+							groupFull("#SFBTg", SFgFullMatrix);
 						});
 
 					var MAPBTlabel = MAPBTg.append("text")
@@ -371,7 +356,7 @@ var svgGlobal = d3.select("body")
 						.attr("fill", buildingColor)
 						.attr("fill-opacity", 1)
 						.on("click", function(){
-							return CMtoThumb();
+							CMtoThumb();
 						});
 
 					var MAPOHlabel = MAPOHg.append("text")
@@ -617,9 +602,8 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPbuilding")
 						.attr("fill", buildingColor)
 						.attr("fill-opacity", 1)
-						
 						.on("click", function(){
-							return CMtoThumb();
+							CMtoThumb();
 						});
 
 					var MAPDVlabel = MAPDVg.append("text")
@@ -646,9 +630,8 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPbuilding")
 						.attr("fill", buildingColor)
 						.attr("fill-opacity", 1)
-						
 						.on("click", function(){
-							return CMtoThumb();
+							CMtoThumb();
 						});
 
 					var MAPMOlabel = MAPMOg.append("text")
@@ -681,6 +664,7 @@ var svgGlobal = d3.select("body")
 					.attr("ry", SFBG.ry)
 					.attr("fill", "gray")
 					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#SFBTg", SFgFullMatrix)
 						fadeOutFloorG()
@@ -809,7 +793,13 @@ var svgGlobal = d3.select("body")
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
 					.attr("fill", "gray")
-					.attr("fill-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#BT1g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
 
 				var BT1 = BT1g.append("path")
 					.attr("id", "BT1")
@@ -846,14 +836,21 @@ var svgGlobal = d3.select("body")
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
 					.attr("fill", "gray")
-					.attr("fill-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#BT2g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
 
 				var BT2 = BT2g.append("path")
 					.attr("id", "BT2")
 					.attr("class", "floorElement")
 					.attr("d", "m 1024.9483,245.04354 4.7653,51.22695 23.8267,-4.76524 32.1655,191.80318 -67.9053,10.72195 19.6567,98.28416 30.9744,-2.97821 22.0397,123.30213 -25.0178,8.93486 2.9781,33.35716 70.884,-11.91331 25.0179,144.15024 -40.5052,9.53072 1.1913,33.95267 -150.10681,17.8699 -11.91332,-64.92729 -39.31356,4.76536 -4.76536,-11.91331 -201.33379,30.97451 -16.67868,-64.33156 -109.60153,27.99613 -15.48744,-45.86603 -5.36098,-39.90932 -2.97821,-26.80482 111.98444,-22.63509 -11.91331,-72.67092 215.6298,-47.65294 4.76518,20.84817 36.33549,-8.93492 -17.27428,-108.41055 -32.16551,5.95671 -33.35734,-184.65523 10.72189,-5.95665 -14.29578,-61.94891 z")
 					.attr("fill", buildingColor)
-					.attr("fill-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none");
 
 				var BT253FloorRoom = BT2g.append("path")
 					.attr("id", "BT253floorRoom")
@@ -883,7 +880,13 @@ var svgGlobal = d3.select("body")
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
 					.attr("fill", "gray")
-					.attr("fill-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#LB2g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
 
 				var LB2parent = LB2g.append("g")
 					.attr("id", "LB2parent")
@@ -894,7 +897,8 @@ var svgGlobal = d3.select("body")
 					.attr("class", "floorElement")
 					.attr("d", "M 507.70557,69.845152 C 621.64553,44.195926 663.62888,163.95274 663.62888,163.95274 l 21.22041,91.33979 140.23878,-27.67876 35.05968,38.75015 6.45842,46.13131 17.52977,-3.69056 17.52981,63.66107 -14.76208,8.30364 19.37517,91.33962 -73.80987,21.2204 2.76797,16.60727 18.45239,-2.76797 35.98236,147.61977 -19.37505,8.30369 10.14885,49.82161 -234.34647,54.43471 11.99422,62.7385 -21.22028,7.38087 -15.6847,-59.97046 -94.10757,19.37513 -123.63164,-576.63969 c 0,0 -9.68352,-124.738476 104.25652,-150.387678 z")
 					.attr("fill", buildingColor)
-					.attr("fill-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none");
 
 				var LB221FloorRoom = LB2parent.append("path")
 					.attr("id", "LB221floorRoom")
@@ -927,7 +931,10 @@ var svgGlobal = d3.select("body")
 					.attr("ry", roomBG.ry)
 					.attr("fill", "gray")
 					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
 					.on("click", function(){
+						groupFull("#BT115g", roomGFullMatrix)
+						fadeOutDeviceG();
 					});
 
 				var BT115 = BT115g.append("path")
@@ -936,7 +943,8 @@ var svgGlobal = d3.select("body")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
 					.attr("fill", buildingColor)
 					.attr("fill-opacity", 0)
-					.attr("stroke-width", 1);
+					.attr("stroke-width", 1)
+					.attr("pointer-events", "none");
 
 				var BT115device = BT115g.append("g")
 					.attr("id", "roomIBT0115Dxxxxx")
@@ -988,7 +996,10 @@ var svgGlobal = d3.select("body")
 					.attr("ry", roomBG.ry)
 					.attr("fill", "gray")
 					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
 					.on("click", function(){
+						groupFull("#BT253g", roomGFullMatrix)
+						fadeOutDeviceG();
 					});
 
 				var BT253 = BT253g.append("path")
@@ -997,7 +1008,8 @@ var svgGlobal = d3.select("body")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
 					.attr("fill", buildingColor)
 					.attr("fill-opacity", 0)
-					.attr("stroke-width", 1);
+					.attr("stroke-width", 1)
+					.attr("pointer-events", "none");
 
 					var BT253device = BT253g.append("g")
 						.attr("id", "roomIBT0253D56843")
@@ -1017,8 +1029,7 @@ var svgGlobal = d3.select("body")
 							.attr("fill-opacity", 0)
 							.on("click", function(){
 								groupFull("#IBT0253D56843g", deviceGFullMatrix)
-								groupMatrix("#BT253g", roomGThumbMatrix)
-								fadeDownPaths("#BT253g");
+								groupDown("#BT253g", roomGThumbMatrix);
 							});
 						var BT253devicePath3 = BT253device.append("path")
 							.attr("class", "roomElement")
@@ -1050,7 +1061,10 @@ var svgGlobal = d3.select("body")
 					.attr("ry", roomBG.ry)
 					.attr("fill", "gray")
 					.attr("fill-opacity", 0)
+					.attr("pointer-events", "none")
 					.on("click", function(){
+						groupFull("#LB221g", roomGFullMatrix)
+						fadeOutDeviceG();
 					});
 
 				var LB221 = LB221g.append("path")
@@ -1062,8 +1076,8 @@ var svgGlobal = d3.select("body")
 					.attr("stroke-width", 1);
 
 					var LB221device = LB221g.append("g")
-					.attr("id", "roomILB0221Dxxxxx")
-					.attr("transform", LB221roomDeviceMatrix);
+						.attr("id", "roomILB0221Dxxxxx")
+						.attr("transform", LB221roomDeviceMatrix);	
 
 					var LB221devicePath1 = LB221device.append("path")
 						.attr("class", "roomElement")
@@ -1079,8 +1093,7 @@ var svgGlobal = d3.select("body")
 						.attr("fill-opacity", 0)
 						.on("click", function(){
 							groupFull("#ILB0221Dxxxxxg", deviceGFullMatrix)
-							groupMatrix("#LB221g", roomGThumbMatrix)
-							fadeDownPaths("#LB221g");
+							groupDown("#LB221g", roomGThumbMatrix);
 						});
 					var LB221devicePath3 = LB221device.append("path")
 						.attr("class", "roomElement")
