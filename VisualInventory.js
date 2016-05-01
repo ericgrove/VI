@@ -100,11 +100,22 @@ var svgGlobal = d3.select("body")
 
 			var fadeOut = function(selections){
 				d3.selectAll(selections)
+					.attr("pointer-events", "none")
 					.transition()
 					.duration(Dur)
 					.attr("fill-opacity", 0)
 					.attr("stroke-opacity", 0);
-				}
+				};
+
+			var enableButtons = function(group){
+					d3.selectAll(".button")
+						.attr("pointer-events", "auto");
+				};
+
+			var disableButtons = function(group){
+					d3.selectAll(".button")
+						.attr("pointer-events", "none");
+				};			
 
 			// path functions
 
@@ -208,6 +219,14 @@ var svgGlobal = d3.select("body")
 					fadeDownText(group);
 					};
 
+				var deviceGfull = function(group){
+						groupFull(group, deviceGFullMatrix)
+						enableButtons(group)
+						d3.select(group).selectAll(".chosenButton")
+							.transition().duration(Dur)
+							.attr("fill-opacity", 1)
+						};
+
 				var fadeOutSFG = function(){
 					groupMatrix(".SFg", SFgThumbMatrix)
 					fadeOut(".SFbackground, .SFelement");
@@ -225,7 +244,7 @@ var svgGlobal = d3.select("body")
 
 				var fadeOutDeviceG = function(){
 					groupMatrix(".deviceG", deviceGThumbMatrix)
-					fadeOut(".deviceBackground, .deviceElement");
+					fadeOut(".deviceBackground, .deviceElement, .button");
 					};
 				
 		// Campus Map
@@ -963,7 +982,7 @@ var svgGlobal = d3.select("body")
 						.attr("fill", "#999999")
 						.attr("fill-opacity", 0)
 						.on("click", function(){
-							groupFull("#IBT0115Dxxxxxg", deviceGFullMatrix)
+							deviceGfull("#IBT0115Dxxxxxg")
 							groupDown("#BT115g", roomGThumbMatrix);
 						});
 					var BT115devicePath3 = BT115device.append("path")
@@ -1029,6 +1048,7 @@ var svgGlobal = d3.select("body")
 							.attr("fill-opacity", 0)
 							.on("click", function(){
 								groupFull("#IBT0253D56843g", deviceGFullMatrix)
+								enableButtons("#IBT0253D56843g")
 								groupDown("#BT253g", roomGThumbMatrix);
 							});
 						var BT253devicePath3 = BT253device.append("path")
@@ -1093,6 +1113,7 @@ var svgGlobal = d3.select("body")
 						.attr("fill-opacity", 0)
 						.on("click", function(){
 							groupFull("#ILB0221Dxxxxxg", deviceGFullMatrix)
+							enableButtons("#ILB0221Dxxxxxg")
 							groupDown("#LB221g", roomGThumbMatrix);
 						});
 					var LB221devicePath3 = LB221device.append("path")
@@ -1183,81 +1204,94 @@ var svgGlobal = d3.select("body")
 					.attr("font-weight", "bold")
 					.attr("fill-opacity", 0);
 
-				var issues = IBT0115Dxxxxxg.append("text")
-					.text("Issues:")
-					.attr("class", "text deviceElement")
-					.attr("id", "deviceIssuesText")
-					.attr("pointer-events", "none")
-					.attr("x", 422.03802)
-					.attr("y", 462.13852)
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "40px")
-					.attr("font-weight", "bold")
-					.attr("font-style", "italic")
-					.attr("fill-opacity", 0);
+				var IBT0115DxxxxxIssuesG = IBT0115Dxxxxxg.append("g")
+					.attr("id", "IBT0115DxxxxxIssuesG");
 
-				var issuesItem1 = IBT0115Dxxxxxg.append("text")
-					.text("Inventoried?")
-					.attr("class", "text deviceElement")
-					.attr("id", "deviceIssuesItemText")
-					.attr("pointer-events", "none")
-					.attr("x", 422.03802)
-					.attr("y", 510.35)
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "40px")
-					.attr("fill-opacity", 0);
+					var issues = IBT0115DxxxxxIssuesG.append("text")
+						.text("Issues:")
+						.attr("class", "text deviceElement")
+						.attr("id", "deviceIssuesText")
+						.attr("pointer-events", "none")
+						.attr("x", 422.03802)
+						.attr("y", 462.13852)
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("font-style", "italic")
+						.attr("fill-opacity", 0);
 
-				var yesButton = IBT0115Dxxxxxg.append("rect")
-					.attr("class", "yesButton deviceElement")
-					.attr("width", yesButtonD.width)
-					.attr("height", yesButtonD.height)
-					.attr("x", yesButtonD.x)
-					.attr("y", yesButtonD.y)
-					.attr("ry", yesButtonD.ry)
-					.attr("fill", "#73ea15")
-					.attr("fill-opacity", 0)
-					.on("click", function(){
-						d3.select(this).attr("fill-opacity", 1)
-						d3.selectAll(".noButton").attr("fill-opacity", 0);
-					});
+					var IBT0115DxxxxxIssue1g = IBT0115DxxxxxIssuesG.append("g")
+						.attr("id", "IBT0115DxxxxxIssue1g");
 
-				var noButton = IBT0115Dxxxxxg.append("rect")
-					.attr("class", "noButton deviceElement")
-					.attr("width", noButtonD.width)
-					.attr("height", noButtonD.height)
-					.attr("x", noButtonD.x)
-					.attr("y", noButtonD.y)
-					.attr("ry", noButtonD.ry)
-					.attr("fill", "#ef4848")
-					.attr("fill-opacity", 0)
-					.on("click", function(){
-						d3.select(this).attr("fill-opacity", 1)
-						d3.selectAll(".yesButton").attr("fill-opacity", 0);
-					});
+						var issuesItem1 = IBT0115DxxxxxIssue1g.append("text")
+							.text("Inventoried?")
+							.attr("class", "text deviceElement")
+							.attr("pointer-events", "none")
+							.attr("x", 422.03802)
+							.attr("y", 510.35)
+							.attr("font-family", "sans-serif")
+							.attr("font-size", "40px")
+							.attr("fill-opacity", 0);
 
-				var yesY = IBT0115Dxxxxxg.append("text")
-					.text("Y")
-					.attr("class", "text deviceElement")
-					.attr("x", 900.37415)
-					.attr("y", 510.35)
-					.attr("fill", "black")
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "40px")
-					.attr("font-weight", "bold")
-					.attr("pointer-events", "none")
-					.attr("fill-opacity", 0);
+						var yesButton = IBT0115DxxxxxIssue1g.append("rect")
+							.attr("class", "yesButton deviceElement button")
+							.attr("width", yesButtonD.width)
+							.attr("height", yesButtonD.height)
+							.attr("x", yesButtonD.x)
+							.attr("y", yesButtonD.y)
+							.attr("ry", yesButtonD.ry)
+							.attr("fill", "#73ea15")
+							.attr("fill-opacity", 0)
+							.on("click", function(){
+								d3.select(this)
+									.attr("fill-opacity", 1)
+									.classed("chosenButton", true)
+								d3.select("#IBT0115DxxxxxIssue1g").select(".noButton")
+									.attr("fill-opacity", 0)
+									.classed("chosenButton", false);
+							});
 
-				var noN = IBT0115Dxxxxxg.append("text")
-					.text("N")
-					.attr("class", "text deviceElement")
-					.attr("x", 996.8728)
-					.attr("y", 509.66257)
-					.attr("fill", "black")
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "40px")
-					.attr("font-weight", "bold")
-					.attr("pointer-events", "none")
-					.attr("fill-opacity", 0);
+						var noButton = IBT0115DxxxxxIssue1g.append("rect")
+							.attr("class", "noButton deviceElement button")
+							.attr("width", noButtonD.width)
+							.attr("height", noButtonD.height)
+							.attr("x", noButtonD.x)
+							.attr("y", noButtonD.y)
+							.attr("ry", noButtonD.ry)
+							.attr("fill", "#ef4848")
+							.attr("fill-opacity", 0)
+							.on("click", function(){
+								d3.select(this)
+									.attr("fill-opacity", 1)
+									.classed("chosenButton", true)
+								d3.select("#IBT0115DxxxxxIssue1g").select(".yesButton")
+									.attr("fill-opacity", 0)
+									.classed("chosenButton", false);
+							});
+
+						var yesY = IBT0115DxxxxxIssue1g.append("text")
+							.text("Y")
+							.attr("class", "text deviceElement")
+							.attr("x", 900.37415)
+							.attr("y", 510.35)
+							.attr("fill", "black")
+							.attr("font-family", "sans-serif")
+							.attr("font-size", "40px")
+							.attr("font-weight", "bold")
+							.attr("pointer-events", "none")
+							.attr("fill-opacity", 0);
+
+						var noN = IBT0115DxxxxxIssue1g.append("text")
+							.text("N")
+							.attr("class", "text deviceElement")
+							.attr("x", 996.8728)
+							.attr("y", 509.66257)
+							.attr("fill", "black")
+							.attr("font-family", "sans-serif")
+							.attr("font-size", "40px")
+							.attr("font-weight", "bold")
+							.attr("pointer-events", "none")
+							.attr("fill-opacity", 0);
 
 			var IBT0253D56843g = svg.append("g")
 				.attr("id", "IBT0253D56843g")
@@ -1355,7 +1389,7 @@ var svgGlobal = d3.select("body")
 					.attr("fill-opacity", 0);
 
 				var yesButton = IBT0253D56843g.append("rect")
-					.attr("class", "yesButton deviceElement")
+					.attr("class", "yesButton deviceElement button")
 					.attr("width", yesButtonD.width)
 					.attr("height", yesButtonD.height)
 					.attr("x", yesButtonD.x)
@@ -1369,7 +1403,7 @@ var svgGlobal = d3.select("body")
 					});
 
 				var noButton = IBT0253D56843g.append("rect")
-					.attr("class", "noButton deviceElement")
+					.attr("class", "noButton deviceElement button")
 					.attr("width", noButtonD.width)
 					.attr("height", noButtonD.height)
 					.attr("x", noButtonD.x)
@@ -1502,7 +1536,7 @@ var svgGlobal = d3.select("body")
 					.attr("fill-opacity", 0);
 
 				var yesButton = ILB0221Dxxxxxg.append("rect")
-					.attr("class", "yesButton deviceElement")
+					.attr("class", "yesButton deviceElement button")
 					.attr("width", yesButtonD.width)
 					.attr("height", yesButtonD.height)
 					.attr("x", yesButtonD.x)
@@ -1516,7 +1550,7 @@ var svgGlobal = d3.select("body")
 					});
 
 				var noButton = ILB0221Dxxxxxg.append("rect")
-					.attr("class", "noButton deviceElement")
+					.attr("class", "noButton deviceElement button")
 					.attr("width", noButtonD.width)
 					.attr("height", noButtonD.height)
 					.attr("x", noButtonD.x)
