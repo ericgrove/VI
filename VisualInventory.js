@@ -11,7 +11,7 @@ var svgGlobal = d3.select("body")
 
 		// variables
 
-			var buildingColor = "#ffa500",
+			var buildingColor = "orange",
 				deviceColor = 	"gray",
 				Dur = 			570,
 				BGopacity = 	0.3,
@@ -102,8 +102,8 @@ var svgGlobal = d3.select("body")
 				d3.selectAll(selections)
 					.transition()
 					.duration(Dur)
-					.style("opacity", 0)
-					.style("stroke-opacity", 0);
+					.attr("fill-opacity", 0)
+					.attr("stroke-opacity", 0);
 				}
 
 			// path functions
@@ -117,10 +117,8 @@ var svgGlobal = d3.select("body")
 					d3.select(selections).selectAll('path')
 						.transition()
 						.duration(Dur)
-						.style("opacity", pathDownOpacity)
-						.style("opacity", pathDownOpacity)
-						.style("stroke-opacity", pathStrokeDownOpacity)
-						.style("stroke-opacity", pathStrokeDownOpacity)
+						.attr("fill-opacity", pathDownOpacity)
+						.attr("stroke-opacity", pathStrokeDownOpacity)
 						.attr("pointer-events", "none");
 					};
 
@@ -128,10 +126,8 @@ var svgGlobal = d3.select("body")
 					d3.selectAll(selections)
 						.transition()
 						.duration(Dur)
-						.style("opacity", 0)
-						.style("opacity", 0)
-						.style("stroke-opacity", 0)
-						.style("stroke-opacity", 0)
+						.attr("fill-opacity", 0)
+						.attr("stroke-opacity", 0)
 						.attr("pointer-events", "none");
 					};
 
@@ -139,10 +135,8 @@ var svgGlobal = d3.select("body")
 					d3.select(selections).selectAll('path')
 						.transition()
 						.duration(Dur)
-						.style("opacity", pathUpOpacity)
-						.style("opacity", 1)
-						.style("stroke-opacity", 0.8)
-						.style("stroke-opacity", pathStrokeUpOpacity)
+						.attr("fill-opacity", pathUpOpacity)
+						.attr("stroke-opacity", pathStrokeUpOpacity)
 						.attr("pointer-events", "auto");
 					};
 
@@ -156,21 +150,21 @@ var svgGlobal = d3.select("body")
 					d3.select(selections).selectAll('text')
 						.transition()
 						.duration(Dur)
-						.style("opacity", textDownOpacity);
+						.attr("fill-opacity", textDownOpacity);
 					};
 
 				var fadeOutText = function(selections){
 					d3.selectAll(selections).selectAll('text')
 						.transition()
 						.duration(Dur)
-						.style("opacity", 0);
+						.attr("fill-opacity", 0);
 					};
 
 				var fadeUpText = function(selections){
 					d3.select(selections).selectAll('text')
 						.transition()
 						.duration(Dur)
-						.style("opacity", textUpOpacity);
+						.attr("fill-opacity", textUpOpacity);
 					};
 
 			// background functions
@@ -179,14 +173,14 @@ var svgGlobal = d3.select("body")
 					d3.select(group).select(".background")
 						.transition()
 						.duration(Dur)
-						.style("opacity", BGopacity)
+						.attr("fill-opacity", BGopacity)
 						.attr("pointer-events", "none");
 
 				var fadeDownBackground = function(group)
 					d3.select(group).select(".background")
 						.transition()
 						.duration(Dur)
-						.style("opacity", BGopacity)
+						.attr("fill-opacity", BGopacity)
 						.attr("pointer-events", "auto");
 
 			// group matrix function
@@ -247,8 +241,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", mapBG.x)
 					.attr("y", mapBG.y)
 					.attr("ry", mapBG.ry)
-					.style("fill", "gray")
-					.style("opacity", BGopacity)
+					.attr("fill", "gray")
+					.attr("fill-opacity", BGopacity)
 					.on("click", function(){
 						CMtoFull();
 					});
@@ -274,21 +268,24 @@ var svgGlobal = d3.select("body")
 							.attr("d", MAPHApath)
 							.attr("id", "MAPHA")
 							.attr("class", "MAPbuilding")
-							.style("fill", buildingColor)
-							.style("opacity", 1)
+							.attr("fill", buildingColor)
+							.attr("fill-opacity", 1)
 							.on("click", function(){
 								CMtoThumb();
 							});
 
 					var MAPHAlabel = MAPHAg.append("text")
 						.text("HA")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPHAlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPHAlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 625.55328)
 						.attr("y", 371.35052)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPRCg = CampusMap.append("g")
 					.attr("id", "MAPRCg");
@@ -299,21 +296,24 @@ var svgGlobal = d3.select("body")
 							.attr("d", MAPRCpath)
 							.attr("id", "MAPRC")
 							.attr("class", "MAPbuilding")
-							.style("fill", buildingColor)
-							.style("opacity", 1)
+							.attr("fill", buildingColor)
+							.attr("fill-opacity", 1)
 							.on("click", function(){
 								CMtoThumb();
 							});
 
 					var MAPRClabel = MAPRCg.append("text")
 						.text("RC")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPRClabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPRClabel")
 						.attr("pointer-events", "none")
 						.attr("x", 768.71338)
 						.attr("y", 342.33542)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPBTg = CampusMap.append("g")
 					.attr("id", "MAPBTg");
@@ -324,8 +324,8 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPBTpath)
 						.attr("id", "MAPBT")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb()
 							groupFull("#SFBTg", SFgFullMatrix);
@@ -333,13 +333,16 @@ var svgGlobal = d3.select("body")
 
 					var MAPBTlabel = MAPBTg.append("text")
 						.text("BT")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPBTlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPBTlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 1141)
 						.attr("y", 617)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPOHg = CampusMap.append("g")
 					.attr("id", "MAPOHg");
@@ -350,21 +353,24 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPOHpath)
 						.attr("id", "MAPOH")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb();
 						});
 
 					var MAPOHlabel = MAPOHg.append("text")
 						.text("OH")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPOHlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPOHlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 913.69702)
 						.attr("y", 358.03427)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPGSg = CampusMap.append("g")
 					
@@ -376,8 +382,8 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPGSpath)
 						.attr("id", "MAPGS")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						
 						.on("click", function(){
 							return CMtoThumb();
@@ -385,13 +391,18 @@ var svgGlobal = d3.select("body")
 
 					var MAPGSlabel = MAPGSg.append("text")
 						.text("GS")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPGSlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPGSlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 710.53534)
-						.attr("y", 826.22955)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 826.22955
+
+							)
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPPEg = CampusMap.append("g")
 					
@@ -403,21 +414,25 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPPEpath)
 						.attr("id", "MAPPE")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
+						
 						.on("click", function(){
 							return CMtoThumb();
 						});
 
 					var MAPPElabel = MAPPEg.append("text")
 						.text("PE")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPPElabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPPElabel")
 						.attr("pointer-events", "none")
 						.attr("x", 496.29202)
 						.attr("y", 582.43561)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPLBg = CampusMap.append("g")
 					
@@ -429,15 +444,15 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPLBpath)
 						.attr("id", "MAPLB")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb()
 							groupMatrix("#SFLBg", SFgFullMatrix)
 							d3.select("#SFLBBG")
 								.transition()
 								.duration(Dur)
-								.style("opacity", BGopacity)
+								.attr("fill-opacity", BGopacity)
 								.attr("pointer-events", "none")
 							fadeUpPaths("#SFLBg")
 							fadeUpText("#SFLBg");
@@ -445,13 +460,16 @@ var svgGlobal = d3.select("body")
 
 					var MAPLBlabel = MAPLBg.append("text")
 						.text("LB")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPLBlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPLBlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 679.13763)
 						.attr("y", 636.9198)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPCMg = CampusMap.append("g")
 					
@@ -463,8 +481,8 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPCMpath)
 						.attr("id", "MAPCM")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						
 						.on("click", function(){
 							return CMtoThumb();
@@ -472,13 +490,18 @@ var svgGlobal = d3.select("body")
 
 					var MAPCMlabel = MAPCMg.append("text")
 						.text("CM")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPCMlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPCMlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 994.54071)
-						.attr("y", 920.18665)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 920.18665
+
+							)
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPHUg = CampusMap.append("g")
 					
@@ -490,8 +513,8 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPHUpath)
 						.attr("id", "MAPHU")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						
 						.on("click", function(){
 							return CMtoThumb();
@@ -499,13 +522,16 @@ var svgGlobal = d3.select("body")
 
 					var MAPHUlabel = MAPHUg.append("text")
 						.text("HU")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPHUlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPHUlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 981.10968)
 						.attr("y", 640.61371)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPLABg = CampusMap.append("g")
 					
@@ -517,8 +543,8 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPLABpath)
 						.attr("id", "MAPLAB")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						
 						.on("click", function(){
 							return CMtoThumb();
@@ -526,13 +552,16 @@ var svgGlobal = d3.select("body")
 
 					var MAPLABlabel = MAPLABg.append("text")
 						.text("LAB")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPLABlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPLABlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 348.54675)
 						.attr("y", 793.90851)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPHOg = CampusMap.append("g")
 					.attr("id", "MAPHOg");
@@ -543,21 +572,24 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPHOpath)
 						.attr("id", "MAPHO")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							return CMtoThumb();
 						});
 
 					var MAPHOlabel = MAPHOg.append("text")
 						.text("HO")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPHOlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPHOlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 1065.0154)
 						.attr("y", 470.80042)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPDVg = CampusMap.append("g")
 					.attr("id", "MAPDVg");
@@ -568,21 +600,24 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPDVpath)
 						.attr("id", "MAPDV")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb();
 						});
 
 					var MAPDVlabel = MAPDVg.append("text")
 						.text("DV")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPDVlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPDVlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 1052.8064)
 						.attr("y", 543.65021)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 				var MAPMOg = CampusMap.append("g")
 					.attr("id", "MAPMOg");
@@ -593,21 +628,24 @@ var svgGlobal = d3.select("body")
 						.attr("d", MAPMOpath)
 						.attr("id", "MAPMO")
 						.attr("class", "MAPbuilding")
-						.style("fill", buildingColor)
-						.style("opacity", 1)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 1)
 						.on("click", function(){
 							CMtoThumb();
 						});
 
 					var MAPMOlabel = MAPMOg.append("text")
 						.text("MO")
-						.attr("class", "MAPlabel text")
-						.attr("id", "MAPMOlabel text")
+						.attr("class", "MAPlabel")
+						.attr("id", "MAPMOlabel")
 						.attr("pointer-events", "none")
 						.attr("x", 839.35431)
 						.attr("y", 647.11249)
-						.style("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
+						.attr("fill", "black")
+						.attr("fill-opacity", 1);
 
 		// Stack of FLoors
 	
@@ -624,6 +662,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", SFBG.x)
 					.attr("y", SFBG.y)
 					.attr("ry", SFBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#SFBTg", SFgFullMatrix)
@@ -636,8 +676,8 @@ var svgGlobal = d3.select("body")
 					.attr("id", "SFBT01")
 					.attr("class", "SFelement")
 					.attr("d", "m 653.01207,739.68849 1.714,18.42514 8.56986,-1.71395 11.56916,68.98705 -24.42395,3.85648 7.07006,35.35046 11.14076,-1.07123 7.92712,44.34885 -8.9983,3.21367 1.07118,11.99777 25.49525,-4.28493 8.99836,51.84745 -14.56875,3.42795 0.42852,12.21198 -53.98988,6.42733 -4.28494,-23.35277 -14.14017,1.714 -1.71396,-4.28493 -72.415,11.1408 -5.99893,-23.13854 -39.42106,10.06958 -5.57048,-16.49695 -1.92824,-14.35445 -1.07118,-9.64109 40.27817,-8.14129 -4.28498,-26.13795 77.55695,-17.13968 1.71395,7.4986 13.069,-3.21366 -6.21313,-38.99271 -11.56925,2.1425 -11.99777,-66.41612 3.85644,-2.14248 -5.1419,-22.28156 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
 					.on("click", function(){
 						groupFull("#BT1g", floorGFullMatrix)
 						groupDown("#SFBTg", SFgThumbMatrix);
@@ -646,19 +686,19 @@ var svgGlobal = d3.select("body")
 				var BT01Label = SFBTg.append("text")
 					.attr("class", "text SFelement")
 					.text("1")
-					.style("font-family", "sans-serif")
-					.style("font-size", "40px")
-					.style("font-weight", "bold")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
 					.attr("x", 610.58026)
 					.attr("y", 935.08148)
-					.style("opacity", 0)
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none");
 				
 				var SFBT02 = SFBTg.append("path")
 					.attr("class", "SFelement")
 					.attr("d", "m 653.01207,472.90807 1.714,18.42506 8.56986,-1.71391 11.56916,68.98704 -24.42395,3.85645 7.07006,35.35045 11.14076,-1.07118 7.92712,44.34885 -8.9983,3.21366 1.07118,11.99778 25.49525,-4.28494 8.99836,51.84742 -14.56875,3.42799 0.42852,12.21193 -53.98988,6.42742 -4.28494,-23.35277 -14.14017,1.71395 -1.71396,-4.28497 -72.415,11.14084 -5.99893,-23.13856 -39.42106,10.06956 -5.57048,-16.4969 -1.92824,-14.35446 -1.07118,-9.64109 40.27817,-8.14129 -4.28498,-26.13798 77.55695,-17.13964 1.71395,7.49855 13.069,-3.21366 -6.21313,-38.9927 -11.56925,2.14248 -11.99777,-66.41611 3.85644,-2.14244 -5.1419,-22.28155 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
 					.on("click", function(){
 						groupFull("#BT2g", floorGFullMatrix)
 						groupDown("#SFBTg", SFgThumbMatrix);
@@ -667,16 +707,19 @@ var svgGlobal = d3.select("body")
 				var BT02Label = SFBTg.append("text")
 					.attr("class", "text SFelement")
 					.text("2")
-					.style("font-weight", "bold")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
 					.attr("x", 610.58026)
 					.attr("y", 666.43298)
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none");
 
 				var SFBT03 = SFBTg.append("path")
 					.attr("class", "SFelement")
 					.attr("d", "m 653.01207,206.49098 1.714,18.42511 8.56986,-1.71396 11.56916,68.98705 -24.42395,3.85644 7.07006,35.35054 11.14076,-1.07121 7.92712,44.3488 -8.9983,3.21367 1.07118,11.99781 25.49525,-4.28497 8.99836,51.84744 -14.56875,3.42791 0.42852,12.21202 -53.98988,6.42738 -4.28494,-23.35281 -14.14017,1.71399 -1.71396,-4.28493 -72.415,11.14079 -5.99893,-23.13852 -39.42106,10.06954 -5.57048,-16.49691 -1.92824,-14.35447 -1.07118,-9.64103 40.27817,-8.1413 -4.28498,-26.13798 77.55695,-17.13965 1.71395,7.49857 13.069,-3.21368 -6.21313,-38.99269 -11.56925,2.14245 -11.99777,-66.41612 3.85644,-2.14245 -5.1419,-22.28154 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0);
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0);
 
 			var SFLBg = svg.append("g")
 				.attr("id", "SFLBg")
@@ -691,6 +734,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", SFBG.x)
 					.attr("y", SFBG.y)
 					.attr("ry", SFBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#SFLBg", SFgFullMatrix)
@@ -707,14 +752,14 @@ var svgGlobal = d3.select("body")
 						.attr("id", "SFLB01")
 						.attr("class", "SFelement")
 						.attr("d", "m 325.96662,480.94772 c 47.75357,-10.74989 65.34928,39.44159 65.34928,39.44159 l 8.89372,38.28157 58.77571,-11.60049 14.69392,16.24064 2.7068,19.33417 7.34693,-1.54676 7.34695,26.6811 -6.18696,3.48015 8.12036,38.2815 -30.93458,8.89372 1.16009,6.9603 7.73361,-1.16009 15.08063,61.86917 -8.12031,3.48017 4.2535,20.88082 -98.21734,22.81422 5.02692,26.29444 -8.89367,3.09341 -6.57364,-25.13432 -39.44158,8.12034 -51.81546,-241.67642 c 0,0 -4.05848,-52.27935 43.69512,-63.02923 z")
-						.style("fill", buildingColor)
-						.style("opacity", 0);
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 0);
 
 					var SFLB02 = SFLBfloorOffset.append("path")
 						.attr("class", "SFelement")
 						.attr("d", "m 325.96662,91.947725 c 47.75357,-10.749892 65.34928,39.441585 65.34928,39.441585 l 8.89372,38.28157 58.77571,-11.60049 14.69392,16.24064 2.7068,19.33417 7.34693,-1.54676 7.34695,26.6811 -6.18696,3.48015 8.12036,38.2815 -30.93458,8.89372 1.16009,6.9603 7.73361,-1.16009 15.08063,61.86917 -8.12031,3.48017 4.2535,20.88082 -98.21734,22.81422 5.02692,26.29444 -8.89367,3.09341 -6.57364,-25.13432 -39.44158,8.12034 -51.81546,-241.67642 c 0,0 -4.05848,-52.27935 43.69512,-63.029225 z")
-						.style("fill", buildingColor)
-						.style("opacity", 0)
+						.attr("fill", buildingColor)
+						.attr("fill-opacity", 0)
 						.attr("pointer-events", "none")
 						.on("click", function(){
 							groupFull("#LB2g", floorGFullMatrix)
@@ -724,9 +769,12 @@ var svgGlobal = d3.select("body")
 					var SFLB02Label = SFLBfloorOffset.append("text")
 						.attr("class", "text SFelement")
 						.text("2")
-						.style("font-weight", "bold")
+						.attr("font-family", "sans-serif")
+						.attr("font-size", "40px")
+						.attr("font-weight", "bold")
 						.attr("x", 367.30527)
 						.attr("y", 279.40375)
+						.attr("fill-opacity", 0)
 						.attr("pointer-events", "none");
 
 		// floors
@@ -744,6 +792,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", 492.79297)
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#BT1g", floorGFullMatrix)
@@ -755,18 +805,18 @@ var svgGlobal = d3.select("body")
 					.attr("id", "BT1")
 					.attr("class", "floorElement")
 					.attr("d", "m 1024.9483,245.04354 4.7653,51.22695 23.8267,-4.76524 32.1655,191.80318 -67.9053,10.72195 19.6567,98.28416 30.9744,-2.97821 22.0397,123.30213 -25.0178,8.93486 2.9781,33.35716 70.884,-11.91331 25.0179,144.15024 -40.5052,9.53072 1.1913,33.95267 -150.10681,17.8699 -11.91332,-64.92729 -39.31356,4.76536 -4.76536,-11.91331 -201.33379,30.97451 -16.67868,-64.33156 -109.60153,27.99613 -15.48744,-45.86603 -5.36098,-39.90932 -2.97821,-26.80482 111.98444,-22.63509 -11.91331,-72.67092 215.6298,-47.65294 4.76518,20.84817 36.33549,-8.93492 -17.27428,-108.41055 -32.16551,5.95671 -33.35734,-184.65523 10.72189,-5.95665 -14.29578,-61.94891 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0);
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0);
 
 				var BT115FloorRoom = BT1g.append("path")
 					.attr("id", "BT115floorRoom")
-					.attr("class", "floorElement floorRoom")
+					.attr("class", "floorElement")
 					.attr("d", "m 995.21894,385.3672 9.49116,50.16733 65.7599,-11.86389 -8.1353,-49.82839 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke", "black")
-					.style("stroke-width", 4)
-					.style("stroke-opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke", "black")
+					.attr("stroke-width", 6)
+					.attr("stroke-opacity", 0)
 					.on("click", function(){
 						groupFull("#BT115g", roomGFullMatrix)
 						groupDown("#BT1g", floorGThumbMatrix);
@@ -785,6 +835,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", 492.79297)
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#BT2g", floorGFullMatrix)
@@ -796,19 +848,19 @@ var svgGlobal = d3.select("body")
 					.attr("id", "BT2")
 					.attr("class", "floorElement")
 					.attr("d", "m 1024.9483,245.04354 4.7653,51.22695 23.8267,-4.76524 32.1655,191.80318 -67.9053,10.72195 19.6567,98.28416 30.9744,-2.97821 22.0397,123.30213 -25.0178,8.93486 2.9781,33.35716 70.884,-11.91331 25.0179,144.15024 -40.5052,9.53072 1.1913,33.95267 -150.10681,17.8699 -11.91332,-64.92729 -39.31356,4.76536 -4.76536,-11.91331 -201.33379,30.97451 -16.67868,-64.33156 -109.60153,27.99613 -15.48744,-45.86603 -5.36098,-39.90932 -2.97821,-26.80482 111.98444,-22.63509 -11.91331,-72.67092 215.6298,-47.65294 4.76518,20.84817 36.33549,-8.93492 -17.27428,-108.41055 -32.16551,5.95671 -33.35734,-184.65523 10.72189,-5.95665 -14.29578,-61.94891 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none");
 
 				var BT253FloorRoom = BT2g.append("path")
 					.attr("id", "BT253floorRoom")
-					.attr("class", "floorElement floorRoom")
+					.attr("class", "floorElement")
 					.attr("d", "m 995.21894,385.3672 9.49116,50.16733 65.7599,-11.86389 -8.1353,-49.82839 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke", "black")
-					.style("stroke-width", 4)
-					.style("stroke-opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke", "black")
+					.attr("stroke-width", 6)
+					.attr("stroke-opacity", 0)
 					.on("click", function(){
 						groupFull("#BT253g", roomGFullMatrix)
 						groupDown("#BT2g", floorGThumbMatrix);
@@ -827,6 +879,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", 492.79297)
 					.attr("y", 165.85027)
 					.attr("ry", 35.717941)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#LB2g", floorGFullMatrix)
@@ -842,19 +896,19 @@ var svgGlobal = d3.select("body")
 					.attr("id", "LB2")
 					.attr("class", "floorElement")
 					.attr("d", "M 507.70557,69.845152 C 621.64553,44.195926 663.62888,163.95274 663.62888,163.95274 l 21.22041,91.33979 140.23878,-27.67876 35.05968,38.75015 6.45842,46.13131 17.52977,-3.69056 17.52981,63.66107 -14.76208,8.30364 19.37517,91.33962 -73.80987,21.2204 2.76797,16.60727 18.45239,-2.76797 35.98236,147.61977 -19.37505,8.30369 10.14885,49.82161 -234.34647,54.43471 11.99422,62.7385 -21.22028,7.38087 -15.6847,-59.97046 -94.10757,19.37513 -123.63164,-576.63969 c 0,0 -9.68352,-124.738476 104.25652,-150.387678 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none");
 
 				var LB221FloorRoom = LB2parent.append("path")
 					.attr("id", "LB221floorRoom")
-					.attr("class", "floorElement floorRoom")
+					.attr("class", "floorElement")
 					.attr("d", "m 524.2267,284.70008 9.55395,52.35317 66.1949,-12.3808 -8.18914,-51.99947 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke", "black")
-					.style("stroke-width", 4)
-					.style("stroke-opacity", 0)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke", "black")
+					.attr("stroke-width", 6)
+					.attr("stroke-opacity", 0)
 					.on("click", function(){
 						groupFull("#LB221g", roomGFullMatrix)
 						groupDown("#LB2g", floorGThumbMatrix);
@@ -875,6 +929,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", roomBG.x)
 					.attr("y", roomBG.y)
 					.attr("ry", roomBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#BT115g", roomGFullMatrix)
@@ -885,9 +941,9 @@ var svgGlobal = d3.select("body")
 					.attr("id", "BT115")
 					.attr("class", "roomElement")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke-width", 1)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke-width", 1)
 					.attr("pointer-events", "none");
 
 				var BT115device = BT115g.append("g")
@@ -897,15 +953,15 @@ var svgGlobal = d3.select("body")
 					var BT115devicePath1 = BT115device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var BT115devicePath2 = BT115device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0)
+						.attr("fill", "#999999")
+						.attr("fill-opacity", 0)
 						.on("click", function(){
 							groupFull("#IBT0115Dxxxxxg", deviceGFullMatrix)
 							groupDown("#BT115g", roomGThumbMatrix);
@@ -913,17 +969,17 @@ var svgGlobal = d3.select("body")
 					var BT115devicePath3 = BT115device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var BT115devicePath6 = BT115device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 
 			var BT253g = svg.append("g")
 				.attr("id", "BT253g")
@@ -938,6 +994,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", roomBG.x)
 					.attr("y", roomBG.y)
 					.attr("ry", roomBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#BT253g", roomGFullMatrix)
@@ -948,9 +1006,9 @@ var svgGlobal = d3.select("body")
 					.attr("id", "BT253")
 					.attr("class", "roomElement")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke-width", 1)
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke-width", 1)
 					.attr("pointer-events", "none");
 
 					var BT253device = BT253g.append("g")
@@ -960,15 +1018,15 @@ var svgGlobal = d3.select("body")
 						var BT253devicePath1 = BT253device.append("path")
 							.attr("class", "roomElement")
 							.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
+							.attr("fill", "none")
+							.attr("stroke", "black")
+							.attr("stroke-opacity", 0)
+							.attr("stroke-width", 1);
 						var BT253devicePath2 = BT253device.append("path")
 							.attr("class", "roomElement")
 							.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-							.style("fill", "#999999")
-							.style("opacity", 0)
+							.attr("fill", "#999999")
+							.attr("fill-opacity", 0)
 							.on("click", function(){
 								groupFull("#IBT0253D56843g", deviceGFullMatrix)
 								groupDown("#BT253g", roomGThumbMatrix);
@@ -976,17 +1034,17 @@ var svgGlobal = d3.select("body")
 						var BT253devicePath3 = BT253device.append("path")
 							.attr("class", "roomElement")
 							.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
+							.attr("fill", "none")
+							.attr("stroke", "black")
+							.attr("stroke-opacity", 0)
+							.attr("stroke-width", 1);
 						var BT253devicePath6 = BT253device.append("path")
 							.attr("class", "roomElement")
 							.attr("d", "m 56.382192,195.78672 95.958128,0")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
+							.attr("fill", "none")
+							.attr("stroke", "black")
+							.attr("stroke-opacity", 0)
+							.attr("stroke-width", 1);
 
 			var LB221g = svg.append("g")
 				.attr("id", "LB221g")
@@ -1001,6 +1059,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", roomBG.x)
 					.attr("y", roomBG.y)
 					.attr("ry", roomBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0)
 					.attr("pointer-events", "none")
 					.on("click", function(){
 						groupFull("#LB221g", roomGFullMatrix)
@@ -1011,9 +1071,9 @@ var svgGlobal = d3.select("body")
 					.attr("id", "LB221")
 					.attr("class", "roomElement")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke-width", 1);
+					.attr("fill", buildingColor)
+					.attr("fill-opacity", 0)
+					.attr("stroke-width", 1);
 
 					var LB221device = LB221g.append("g")
 						.attr("id", "roomILB0221Dxxxxx")
@@ -1022,15 +1082,15 @@ var svgGlobal = d3.select("body")
 					var LB221devicePath1 = LB221device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var LB221devicePath2 = LB221device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0)
+						.attr("fill", "#999999")
+						.attr("fill-opacity", 0)
 						.on("click", function(){
 							groupFull("#ILB0221Dxxxxxg", deviceGFullMatrix)
 							groupDown("#LB221g", roomGThumbMatrix);
@@ -1038,21 +1098,19 @@ var svgGlobal = d3.select("body")
 					var LB221devicePath3 = LB221device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var LB221devicePath6 = LB221device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 
 		// devices
-
-			// devices
 	
 			var IBT0115Dxxxxxg = svg.append("g")
 				.attr("id", "IBT0115Dxxxxxg")
@@ -1067,8 +1125,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", deviceBG.x)
 					.attr("y", deviceBG.y)
 					.attr("ry", deviceBG.ry)
-					.style("fill", "gray")
-					.style("opacity", 0);
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0);
 
 				var device = IBT0115Dxxxxxg.append("g")
 					.attr("id", "IBT0115Dxxxxx")
@@ -1077,29 +1135,29 @@ var svgGlobal = d3.select("body")
 					var devicePath1 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath2 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0);
+						.attr("fill", "#999999")
+						.attr("fill-opacity", 0);
 					var devicePath3 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath6 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 
 				var deviceName = IBT0115Dxxxxxg.append("text")
 					.text("I-BT0115-Dxxxxx")
@@ -1108,7 +1166,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.style("font-weight", "bold");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var deviceModelOS = IBT0115Dxxxxxg.append("text")
 					.text("7010 Windows 7")
@@ -1117,7 +1178,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.style("font-weight", "bold");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var issues = IBT0115Dxxxxxg.append("text")
 					.text("Issues:")
@@ -1126,8 +1190,11 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.style("font-weight", "bold")
-					.style("font-style", "italic");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("font-style", "italic")
+					.attr("fill-opacity", 0);
 
 				var issuesItem1 = IBT0115Dxxxxxg.append("text")
 					.text("Inventoried?")
@@ -1135,7 +1202,10 @@ var svgGlobal = d3.select("body")
 					.attr("id", "deviceIssuesItemText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
-					.attr("y", 510.35);
+					.attr("y", 510.35)
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("fill-opacity", 0);
 
 				var yesButton = IBT0115Dxxxxxg.append("rect")
 					.attr("class", "yesButton deviceElement")
@@ -1144,11 +1214,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", yesButtonD.x)
 					.attr("y", yesButtonD.y)
 					.attr("ry", yesButtonD.ry)
-					.style("fill", "#73ea15")
-					.style("opacity", 0)
+					.attr("fill", "#73ea15")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".noButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".noButton").attr("fill-opacity", 0);
 					});
 
 				var noButton = IBT0115Dxxxxxg.append("rect")
@@ -1158,11 +1228,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", noButtonD.x)
 					.attr("y", noButtonD.y)
 					.attr("ry", noButtonD.ry)
-					.style("fill", "#ef4848")
-					.style("opacity", 0)
+					.attr("fill", "#ef4848")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".yesButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".yesButton").attr("fill-opacity", 0);
 					});
 
 				var yesY = IBT0115Dxxxxxg.append("text")
@@ -1170,16 +1240,24 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
 
 				var noN = IBT0115Dxxxxxg.append("text")
 					.text("N")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
 
 			var IBT0253D56843g = svg.append("g")
 				.attr("id", "IBT0253D56843g")
@@ -1194,8 +1272,8 @@ var svgGlobal = d3.select("body")
 					.attr("x", deviceBG.x)
 					.attr("y", deviceBG.y)
 					.attr("ry", deviceBG.ry)
-					.style("fill", "gray")
-					.style("opacity", 0);
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0);
 
 				var device = IBT0253D56843g.append("g")
 					.attr("id", "IBT0253D56843")
@@ -1204,29 +1282,29 @@ var svgGlobal = d3.select("body")
 					var devicePath1 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath2 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0);
+						.attr("fill", "#999999")
+						.attr("fill-opacity", 0);
 					var devicePath3 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath6 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 
 				var deviceName = IBT0253D56843g.append("text")
 					.text("I-BT0253-D56843")
@@ -1235,7 +1313,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.style("font-weight", "bold");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var deviceModelOS = IBT0253D56843g.append("text")
 					.text("7010 Windows 7")
@@ -1244,7 +1325,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.style("font-weight", "bold");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var issues = IBT0253D56843g.append("text")
 					.text("Issues:")
@@ -1253,8 +1337,11 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.style("font-weight", "bold")
-					.style("font-style", "italic");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("font-style", "italic")
+					.attr("fill-opacity", 0);
 
 				var issuesItem1 = IBT0253D56843g.append("text")
 					.text("Inventoried?")
@@ -1262,7 +1349,10 @@ var svgGlobal = d3.select("body")
 					.attr("id", "deviceIssuesItemText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
-					.attr("y", 510.35);
+					.attr("y", 510.35)
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("fill-opacity", 0);
 
 				var yesButton = IBT0253D56843g.append("rect")
 					.attr("class", "yesButton deviceElement")
@@ -1271,9 +1361,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", yesButtonD.x)
 					.attr("y", yesButtonD.y)
 					.attr("ry", yesButtonD.ry)
+					.attr("fill", "#73ea15")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".noButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".noButton").attr("fill-opacity", 0);
 					});
 
 				var noButton = IBT0253D56843g.append("rect")
@@ -1283,9 +1375,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", noButtonD.x)
 					.attr("y", noButtonD.y)
 					.attr("ry", noButtonD.ry)
+					.attr("fill", "#ef4848")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".yesButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".yesButton").attr("fill-opacity", 0);
 					});
 
 				var yesY = IBT0253D56843g.append("text")
@@ -1293,16 +1387,24 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
 
 				var noN = IBT0253D56843g.append("text")
 					.text("N")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
 
 			var ILB0221Dxxxxxg = svg.append("g")
 				.attr("id", "ILB0221Dxxxxxg")
@@ -1316,7 +1418,9 @@ var svgGlobal = d3.select("body")
 					.attr("height", deviceBG.height)
 					.attr("x", deviceBG.x)
 					.attr("y", deviceBG.y)
-					.attr("ry", deviceBG.ry);
+					.attr("ry", deviceBG.ry)
+					.attr("fill", "gray")
+					.attr("fill-opacity", 0);
 
 				var device = ILB0221Dxxxxxg.append("g")
 					.attr("id", "ILB0221Dxxxxx")
@@ -1325,29 +1429,29 @@ var svgGlobal = d3.select("body")
 					var devicePath1 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath2 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0);
+						.attr("fill", "#999999")
+						.attr("fill-opacity", 0);
 					var devicePath3 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 					var devicePath6 = device.append("path")
 						.attr("class", "deviceElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+						.attr("fill", "none")
+						.attr("stroke", "black")
+						.attr("stroke-opacity", 0)
+						.attr("stroke-width", 1);
 
 				var deviceName = ILB0221Dxxxxxg.append("text")
 					.text("I-LB0221-Dxxxxx")
@@ -1356,7 +1460,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.style("font-weight", "bold");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var deviceModelOS = ILB0221Dxxxxxg.append("text")
 					.text("8811 XP")
@@ -1365,7 +1472,10 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.style("font-weight", "bold")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("fill-opacity", 0);
 
 				var issues = ILB0221Dxxxxxg.append("text")
 					.text("Issues:")
@@ -1374,8 +1484,11 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.style("font-weight", "bold")
-					.style("font-style", "italic");
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("font-style", "italic")
+					.attr("fill-opacity", 0);
 
 				var issuesItem1 = ILB0221Dxxxxxg.append("text")
 					.text("Inventoried?")
@@ -1383,7 +1496,10 @@ var svgGlobal = d3.select("body")
 					.attr("id", "deviceIssuesItemText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
-					.attr("y", 510.35);
+					.attr("y", 510.35)
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("fill-opacity", 0);
 
 				var yesButton = ILB0221Dxxxxxg.append("rect")
 					.attr("class", "yesButton deviceElement")
@@ -1392,9 +1508,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", yesButtonD.x)
 					.attr("y", yesButtonD.y)
 					.attr("ry", yesButtonD.ry)
+					.attr("fill", "#73ea15")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".noButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".noButton").attr("fill-opacity", 0);
 					});
 
 				var noButton = ILB0221Dxxxxxg.append("rect")
@@ -1404,9 +1522,11 @@ var svgGlobal = d3.select("body")
 					.attr("x", noButtonD.x)
 					.attr("y", noButtonD.y)
 					.attr("ry", noButtonD.ry)
+					.attr("fill", "#ef4848")
+					.attr("fill-opacity", 0)
 					.on("click", function(){
-						d3.select(this).style("opacity", 1)
-						d3.selectAll(".yesButton").style("opacity", 0);
+						d3.select(this).attr("fill-opacity", 1)
+						d3.selectAll(".yesButton").attr("fill-opacity", 0);
 					});
 
 				var yesY = ILB0221Dxxxxxg.append("text")
@@ -1414,13 +1534,21 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
 
 				var noN = ILB0221Dxxxxxg.append("text")
 					.text("N")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.style("font-weight", "bold")
-					.attr("pointer-events", "none");
+					.attr("fill", "black")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "40px")
+					.attr("font-weight", "bold")
+					.attr("pointer-events", "none")
+					.attr("fill-opacity", 0);
