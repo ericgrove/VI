@@ -287,7 +287,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 625.55328)
 						.attr("y", 371.35052)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPRCg = CampusMap.append("g")
@@ -312,7 +312,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 768.71338)
 						.attr("y", 342.33542)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPBTg = CampusMap.append("g")
@@ -338,7 +338,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 1141)
 						.attr("y", 617)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPOHg = CampusMap.append("g")
@@ -363,7 +363,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 913.69702)
 						.attr("y", 358.03427)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPGSg = CampusMap.append("g")
@@ -390,7 +390,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 710.53534)
 						.attr("y", 826.22955)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPPEg = CampusMap.append("g")
@@ -416,7 +416,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 496.29202)
 						.attr("y", 582.43561)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPLBg = CampusMap.append("g")
@@ -450,7 +450,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 679.13763)
 						.attr("y", 636.9198)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPCMg = CampusMap.append("g")
@@ -477,7 +477,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 994.54071)
 						.attr("y", 920.18665)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPHUg = CampusMap.append("g")
@@ -504,7 +504,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 981.10968)
 						.attr("y", 640.61371)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPLABg = CampusMap.append("g")
@@ -531,7 +531,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 348.54675)
 						.attr("y", 793.90851)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPHOg = CampusMap.append("g")
@@ -556,7 +556,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 1065.0154)
 						.attr("y", 470.80042)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPDVg = CampusMap.append("g")
@@ -581,7 +581,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 1052.8064)
 						.attr("y", 543.65021)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 				var MAPMOg = CampusMap.append("g")
@@ -606,7 +606,7 @@ var svgGlobal = d3.select("body")
 						.attr("pointer-events", "none")
 						.attr("x", 839.35431)
 						.attr("y", 647.11249)
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.style("opacity", 1);
 
 		// Stack of FLoors
@@ -646,9 +646,9 @@ var svgGlobal = d3.select("body")
 				var BT01Label = SFBTg.append("text")
 					.attr("class", "text SFelement")
 					.text("1")
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "40px")
-					.attr("font-weight", "bold")
+					.style("font-family", "sans-serif")
+					.style("font-size", "40px")
+					.style("font-weight", "bold")
 					.attr("x", 610.58026)
 					.attr("y", 935.08148)
 					.style("opacity", 0)
@@ -667,7 +667,7 @@ var svgGlobal = d3.select("body")
 				var BT02Label = SFBTg.append("text")
 					.attr("class", "text SFelement")
 					.text("2")
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("x", 610.58026)
 					.attr("y", 666.43298)
 					.attr("pointer-events", "none");
@@ -724,7 +724,7 @@ var svgGlobal = d3.select("body")
 					var SFLB02Label = SFLBfloorOffset.append("text")
 						.attr("class", "text SFelement")
 						.text("2")
-						.attr("font-weight", "bold")
+						.style("font-weight", "bold")
 						.attr("x", 367.30527)
 						.attr("y", 279.40375)
 						.attr("pointer-events", "none");
@@ -908,7 +908,6 @@ var svgGlobal = d3.select("body")
 						.style("opacity", 0)
 						.on("click", function(){
 							groupFull("#IBT0115Dxxxxxg", deviceGFullMatrix)
-							groupFull("#bt115device", deviceGFullMatrix)
 							groupDown("#BT115g", roomGThumbMatrix);
 						});
 					var BT115devicePath3 = BT115device.append("path")
@@ -972,7 +971,6 @@ var svgGlobal = d3.select("body")
 							.style("opacity", 0)
 							.on("click", function(){
 								groupFull("#IBT0253D56843g", deviceGFullMatrix)
-								groupFull("#bt253device", deviceGFullMatrix)
 								groupDown("#BT253g", roomGThumbMatrix);
 							});
 						var BT253devicePath3 = BT253device.append("path")
@@ -1035,7 +1033,6 @@ var svgGlobal = d3.select("body")
 						.style("opacity", 0)
 						.on("click", function(){
 							groupFull("#ILB0221Dxxxxxg", deviceGFullMatrix)
-							groupFull("#lb221device", deviceGFullMatrix)
 							groupDown("#LB221g", roomGThumbMatrix);
 						});
 					var LB221devicePath3 = LB221device.append("path")
@@ -1055,13 +1052,8 @@ var svgGlobal = d3.select("body")
 
 		// devices
 
-			var device_data = [
-			  ["deviceElement stroked", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z"],
-			  ["deviceElement filld", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z"],
-			  ["deviceElement stroked", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327"],
-			  ["deviceElement stroked", "m 56.382192,195.78672 95.958128,0"]
-			];
-
+			// devices
+	
 			var IBT0115Dxxxxxg = svg.append("g")
 				.attr("id", "IBT0115Dxxxxxg")
 				.attr("class", "deviceG")
@@ -1074,48 +1066,70 @@ var svgGlobal = d3.select("body")
 					.attr("height", deviceBG.height)
 					.attr("x", deviceBG.x)
 					.attr("y", deviceBG.y)
-					.attr("ry", deviceBG.ry);
+					.attr("ry", deviceBG.ry)
+					.style("fill", "gray")
+					.style("opacity", 0);
 
-				var bt115deviceDef = svg.append('defs').append("g").attr("id","bt115device");
+				var device = IBT0115Dxxxxxg.append("g")
+					.attr("id", "IBT0115Dxxxxx")
+					.attr("transform", deviceMatrix);
 
-					bt115deviceDef.selectAll("path").data(device_data).enter()
-						.append("path")
-						.attr("d", function(d){return d[1]})
-					  	.attr("class", function(d){return d[0]});
+					var devicePath1 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath2 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+						.style("fill", "#999999")
+						.style("opacity", 0);
+					var devicePath3 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath6 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 56.382192,195.78672 95.958128,0")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
 
-					var IBT0115DxxxxxDevice = IBT0115Dxxxxxg.append("g")
-						.attr("transform", deviceMatrix)
-			   			.append("use").attr("xlink:href","#bt115device");
-
-				IBT0115Dxxxxxg.append("text")
+				var deviceName = IBT0115Dxxxxxg.append("text")
 					.text("I-BT0115-Dxxxxx")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold");
 
-				IBT0115Dxxxxxg.append("text")
+				var deviceModelOS = IBT0115Dxxxxxg.append("text")
 					.text("7010 Windows 7")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold");
 
-				IBT0115Dxxxxxg.append("text")
+				var issues = IBT0115Dxxxxxg.append("text")
 					.text("Issues:")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceIssuesText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.attr("font-weight", "bold")
-					.attr("font-style", "italic");
+					.style("font-weight", "bold")
+					.style("font-style", "italic");
 
-				IBT0115Dxxxxxg.append("text")
+				var issuesItem1 = IBT0115Dxxxxxg.append("text")
 					.text("Inventoried?")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceIssuesItemText")
@@ -1123,45 +1137,48 @@ var svgGlobal = d3.select("body")
 					.attr("x", 422.03802)
 					.attr("y", 510.35);
 
-				IBT0115Dxxxxxg.append("rect")
+				var yesButton = IBT0115Dxxxxxg.append("rect")
 					.attr("class", "yesButton deviceElement")
 					.attr("width", yesButtonD.width)
 					.attr("height", yesButtonD.height)
 					.attr("x", yesButtonD.x)
 					.attr("y", yesButtonD.y)
 					.attr("ry", yesButtonD.ry)
+					.style("fill", "#73ea15")
+					.style("opacity", 0)
 					.on("click", function(){
 						d3.select(this).style("opacity", 1)
 						d3.selectAll(".noButton").style("opacity", 0);
 					});
 
-				IBT0115Dxxxxxg.append("rect")
+				var noButton = IBT0115Dxxxxxg.append("rect")
 					.attr("class", "noButton deviceElement")
 					.attr("width", noButtonD.width)
 					.attr("height", noButtonD.height)
 					.attr("x", noButtonD.x)
 					.attr("y", noButtonD.y)
 					.attr("ry", noButtonD.ry)
+					.style("fill", "#ef4848")
+					.style("opacity", 0)
 					.on("click", function(){
 						d3.select(this).style("opacity", 1)
 						d3.selectAll(".yesButton").style("opacity", 0);
 					});
 
-				IBT0115Dxxxxxg.append("text")
+				var yesY = IBT0115Dxxxxxg.append("text")
 					.text("Y")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
 
-				IBT0115Dxxxxxg.append("text")
+				var noN = IBT0115Dxxxxxg.append("text")
 					.text("N")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.style("fill", "black")
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
 
 			var IBT0253D56843g = svg.append("g")
@@ -1176,18 +1193,40 @@ var svgGlobal = d3.select("body")
 					.attr("height", deviceBG.height)
 					.attr("x", deviceBG.x)
 					.attr("y", deviceBG.y)
-					.attr("ry", deviceBG.ry);
+					.attr("ry", deviceBG.ry)
+					.style("fill", "gray")
+					.style("opacity", 0);
 
-				var bt253deviceDef = svg.append('defs').append("g").attr("id","bt253device");
+				var device = IBT0253D56843g.append("g")
+					.attr("id", "IBT0253D56843")
+					.attr("transform", deviceMatrix);
 
-					bt253deviceDef.selectAll("path").data(device_data).enter()
-						.append("path")
-						.attr("d", function(d){return d[1]})
-					  	.attr("class", function(d){return d[0]});
-
-					var IBT0253D56843Device = IBT0253D56843g.append("g")
-						.attr("transform", deviceMatrix)
-			   			.append("use").attr("xlink:href","#bt253device");
+					var devicePath1 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath2 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+						.style("fill", "#999999")
+						.style("opacity", 0);
+					var devicePath3 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath6 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 56.382192,195.78672 95.958128,0")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
 
 				var deviceName = IBT0253D56843g.append("text")
 					.text("I-BT0253-D56843")
@@ -1196,7 +1235,7 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold");
 
 				var deviceModelOS = IBT0253D56843g.append("text")
 					.text("7010 Windows 7")
@@ -1205,7 +1244,7 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold");
 
 				var issues = IBT0253D56843g.append("text")
 					.text("Issues:")
@@ -1214,8 +1253,8 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.attr("font-weight", "bold")
-					.attr("font-style", "italic");
+					.style("font-weight", "bold")
+					.style("font-style", "italic");
 
 				var issuesItem1 = IBT0253D56843g.append("text")
 					.text("Inventoried?")
@@ -1254,7 +1293,7 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
 
 				var noN = IBT0253D56843g.append("text")
@@ -1262,7 +1301,7 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
 
 			var ILB0221Dxxxxxg = svg.append("g")
@@ -1279,46 +1318,66 @@ var svgGlobal = d3.select("body")
 					.attr("y", deviceBG.y)
 					.attr("ry", deviceBG.ry);
 
-				var lb221deviceDef = svg.append('defs').append("g").attr("id","lb221device");
+				var device = ILB0221Dxxxxxg.append("g")
+					.attr("id", "ILB0221Dxxxxx")
+					.attr("transform", deviceMatrix);
 
-					lb221deviceDef.selectAll("path").data(device_data).enter()
-						.append("path")
-						.attr("d", function(d){return d[1]})
-					  	.attr("class", function(d){return d[0]});
+					var devicePath1 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath2 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+						.style("fill", "#999999")
+						.style("opacity", 0);
+					var devicePath3 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
+					var devicePath6 = device.append("path")
+						.attr("class", "deviceElement")
+						.attr("d", "m 56.382192,195.78672 95.958128,0")
+						.style("fill", "none")
+						.style("stroke", "black")
+						.style("stroke-opacity", 0)
+						.style("stroke-width", 1);
 
-					var ILB0221DxxxxxDevice = ILB0221Dxxxxxg.append("g")
-						.attr("transform", deviceMatrix)
-			   			.append("use").attr("xlink:href","#lb221device");
-
-				ILB0221Dxxxxxg.append("text")
+				var deviceName = ILB0221Dxxxxxg.append("text")
 					.text("I-LB0221-Dxxxxx")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold");
 
-				ILB0221Dxxxxxg.append("text")
+				var deviceModelOS = ILB0221Dxxxxxg.append("text")
 					.text("8811 XP")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.style("font-weight", "bold")
 
-				ILB0221Dxxxxxg.append("text")
+				var issues = ILB0221Dxxxxxg.append("text")
 					.text("Issues:")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceIssuesText")
 					.attr("pointer-events", "none")
 					.attr("x", 422.03802)
 					.attr("y", 462.13852)
-					.attr("font-weight", "bold")
-					.attr("font-style", "italic");
+					.style("font-weight", "bold")
+					.style("font-style", "italic");
 
-				ILB0221Dxxxxxg.append("text")
+				var issuesItem1 = ILB0221Dxxxxxg.append("text")
 					.text("Inventoried?")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceIssuesItemText")
@@ -1326,7 +1385,7 @@ var svgGlobal = d3.select("body")
 					.attr("x", 422.03802)
 					.attr("y", 510.35);
 
-				ILB0221Dxxxxxg.append("rect")
+				var yesButton = ILB0221Dxxxxxg.append("rect")
 					.attr("class", "yesButton deviceElement")
 					.attr("width", yesButtonD.width)
 					.attr("height", yesButtonD.height)
@@ -1338,7 +1397,7 @@ var svgGlobal = d3.select("body")
 						d3.selectAll(".noButton").style("opacity", 0);
 					});
 
-				ILB0221Dxxxxxg.append("rect")
+				var noButton = ILB0221Dxxxxxg.append("rect")
 					.attr("class", "noButton deviceElement")
 					.attr("width", noButtonD.width)
 					.attr("height", noButtonD.height)
@@ -1355,7 +1414,7 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 900.37415)
 					.attr("y", 510.35)
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
 
 				var noN = ILB0221Dxxxxxg.append("text")
@@ -1363,5 +1422,5 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("x", 996.8728)
 					.attr("y", 509.66257)
-					.attr("font-weight", "bold")
+					.style("font-weight", "bold")
 					.attr("pointer-events", "none");
