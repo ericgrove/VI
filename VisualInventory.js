@@ -322,9 +322,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPRClabel text")
 						.attr("x", 768.71338)
-						.attr("y", 342.33542)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 342.33542);
 
 				var MAPBTg = CampusMap.append("g")
 					.attr("id", "MAPBTg");
@@ -347,9 +345,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPBTlabel text")
 						.attr("x", 1141)
-						.attr("y", 617)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 617);
 
 				var MAPOHg = CampusMap.append("g")
 					.attr("id", "MAPOHg");
@@ -371,9 +367,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPOHlabel text")
 						.attr("x", 913.69702)
-						.attr("y", 358.03427)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 358.03427);
 
 				var MAPGSg = CampusMap.append("g")
 					
@@ -387,7 +381,6 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPbuilding")
 						.style("fill", buildingColor)
 						.style("opacity", 1)
-						
 						.on("click", function(){
 							return CMtoThumb();
 						});
@@ -397,9 +390,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPGSlabel text")
 						.attr("x", 710.53534)
-						.attr("y", 826.22955)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 826.22955);
 
 				var MAPPEg = CampusMap.append("g")
 					
@@ -422,9 +413,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPPElabel text")
 						.attr("x", 496.29202)
-						.attr("y", 582.43561)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 582.43561);
 
 				var MAPLBg = CampusMap.append("g")
 					
@@ -455,9 +444,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPLBlabel text")
 						.attr("x", 679.13763)
-						.attr("y", 636.9198)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 636.9198);
 
 				var MAPCMg = CampusMap.append("g")
 					
@@ -470,8 +457,7 @@ var svgGlobal = d3.select("body")
 						.attr("id", "MAPCM")
 						.attr("class", "MAPbuilding")
 						.style("fill", buildingColor)
-						.style("opacity", 1)
-						
+						.style("opacity", 1)					
 						.on("click", function(){
 							return CMtoThumb();
 						});
@@ -481,9 +467,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPCMlabel text")
 						.attr("x", 994.54071)
-						.attr("y", 920.18665)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 920.18665);
 
 				var MAPHUg = CampusMap.append("g")
 					
@@ -497,7 +481,6 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPbuilding")
 						.style("fill", buildingColor)
 						.style("opacity", 1)
-						
 						.on("click", function(){
 							return CMtoThumb();
 						});
@@ -507,9 +490,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPHUlabel text")
 						.attr("x", 981.10968)
-						.attr("y", 640.61371)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 640.61371);
 
 				var MAPLABg = CampusMap.append("g")
 					
@@ -522,8 +503,7 @@ var svgGlobal = d3.select("body")
 						.attr("id", "MAPLAB")
 						.attr("class", "MAPbuilding")
 						.style("fill", buildingColor)
-						.style("opacity", 1)
-						
+						.style("opacity", 1)						
 						.on("click", function(){
 							return CMtoThumb();
 						});
@@ -533,9 +513,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPLABlabel text")
 						.attr("x", 348.54675)
-						.attr("y", 793.90851)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 793.90851);
 
 				var MAPHOg = CampusMap.append("g")
 					.attr("id", "MAPHOg");
@@ -557,9 +535,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPHOlabel text")
 						.attr("x", 1065.0154)
-						.attr("y", 470.80042)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 470.80042);
 
 				var MAPDVg = CampusMap.append("g")
 					.attr("id", "MAPDVg");
@@ -581,9 +557,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPDVlabel text")
 						.attr("x", 1052.8064)
-						.attr("y", 543.65021)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 543.65021);
 
 				var MAPMOg = CampusMap.append("g")
 					.attr("id", "MAPMOg");
@@ -605,9 +579,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPMOlabel text")
 						.attr("x", 839.35431)
-						.attr("y", 647.11249)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 647.11249);
 
 		// Stack of FLoors
 	
@@ -1127,16 +1099,14 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("x", 422.03802)
-					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.attr("y", 338.13852);
 
 				IBT0115D56806g.append("text")
 					.text("7010 Windows 7")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
 					.attr("x", 422.03802)
-					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.attr("y", 390);
 
 				var IBT0115D56806IssuesG = IBT0115D56806g.append("g")
 					.attr("id", "IBT0115D56806IssuesG");
@@ -1147,7 +1117,6 @@ var svgGlobal = d3.select("body")
 						.attr("id", "deviceIssuesText")
 						.attr("x", 422.03802)
 						.attr("y", 462.13852)
-						.attr("font-weight", "bold")
 						.attr("font-style", "italic");
 
 					var IBT0115D56806Issue1g = IBT0115D56806IssuesG.append("g")
@@ -1195,15 +1164,13 @@ var svgGlobal = d3.select("body")
 							.text("Y")
 							.attr("class", "text deviceElement")
 							.attr("x", 900.37415)
-							.attr("y", 510.35)
-							.attr("font-weight", "bold");
+							.attr("y", 510.35);
 
 						IBT0115D56806Issue1g.append("text")
 							.text("N")
 							.attr("class", "text deviceElement")
 							.attr("x", 996.8728)
-							.attr("y", 509.66257)
-							.attr("font-weight", "bold");
+							.attr("y", 509.66257);
 
 			var IBT0253D56843g = svg.append("g")
 				.attr("id", "IBT0253D56843g")
@@ -1236,16 +1203,14 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("x", 422.03802)
-					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.attr("y", 338.13852);
 
 				IBT0253D56843g.append("text")
 					.text("7010 Windows 7")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
 					.attr("x", 422.03802)
-					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.attr("y", 390);
 
 				var IBT0253D56843IssuesG = IBT0253D56843g.append("g")
 					.attr("id", "IBT0253D56843IssuesG");
@@ -1256,7 +1221,6 @@ var svgGlobal = d3.select("body")
 						.attr("id", "deviceIssuesText")
 						.attr("x", 422.03802)
 						.attr("y", 462.13852)
-						.attr("font-weight", "bold")
 						.attr("font-style", "italic");
 
 					var IBT0253D56843Issue1g = IBT0253D56843IssuesG.append("g")
@@ -1305,15 +1269,13 @@ var svgGlobal = d3.select("body")
 							.text("Y")
 							.attr("class", "text deviceElement")
 							.attr("x", 900.37415)
-							.attr("y", 510.35)
-							.attr("font-weight", "bold");
+							.attr("y", 510.35);
 
 						IBT0253D56843Issue1g.append("text")
 							.text("N")
 							.attr("class", "text deviceElement")
 							.attr("x", 996.8728)
-							.attr("y", 509.66257)
-							.attr("font-weight", "bold");
+							.attr("y", 509.66257);
 
 			var ILB0221D58404g = svg.append("g")
 				.attr("id", "ILB0221D58404g")
@@ -1346,16 +1308,14 @@ var svgGlobal = d3.select("body")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("x", 422.03802)
-					.attr("y", 338.13852)
-					.attr("font-weight", "bold");
+					.attr("y", 338.13852);
 
 				ILB0221D58404g.append("text")
 					.text("400 Windows 10")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
 					.attr("x", 422.03802)
-					.attr("y", 390)
-					.attr("font-weight", "bold");
+					.attr("y", 390);
 
 				var ILB0221D58404IssuesG = ILB0221D58404g.append("g")
 					.attr("id", "ILB0221D58404IssuesG");
@@ -1366,7 +1326,6 @@ var svgGlobal = d3.select("body")
 						.attr("id", "deviceIssuesText")
 						.attr("x", 422.03802)
 						.attr("y", 462.13852)
-						.attr("font-weight", "bold")
 						.attr("font-style", "italic");
 
 					var ILB0221D58404Issue1g = ILB0221D58404IssuesG.append("g")
@@ -1414,12 +1373,10 @@ var svgGlobal = d3.select("body")
 							.text("Y")
 							.attr("class", "text deviceElement")
 							.attr("x", 900.37415)
-							.attr("y", 510.35)
-							.attr("font-weight", "bold");
+							.attr("y", 510.35);
 
 						ILB0221D58404Issue1g.append("text")
 							.text("N")
 							.attr("class", "text deviceElement")
 							.attr("x", 996.8728)
-							.attr("y", 509.66257)
-							.attr("font-weight", "bold");
+							.attr("y", 509.66257);
