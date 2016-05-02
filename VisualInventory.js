@@ -298,9 +298,7 @@ var svgGlobal = d3.select("body")
 						.attr("class", "MAPlabel text")
 						.attr("id", "MAPHAlabel text")
 						.attr("x", 625.55328)
-						.attr("y", 371.35052)
-						.attr("font-weight", "bold")
-						.style("opacity", 1);
+						.attr("y", 371.35052);
 
 				var MAPRCg = CampusMap.append("g")
 					.attr("id", "MAPRCg");
