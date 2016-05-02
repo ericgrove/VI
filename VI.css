@@ -28,3 +28,6 @@
 	opacity: 0;
 	pointer-events: none;
 }
+.MAPlabel {
+	opacity: 1;
+}
