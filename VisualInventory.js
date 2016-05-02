@@ -281,17 +281,17 @@ var svgGlobal = d3.select("body")
 				var MAPHAg = CampusMap.append("g")
 					.attr("id", "MAPHAg");
 
-						var MAPHApath = "m 573.84831,303.30519 52.76971,-9.38805 5.62896,35.93913 94.93428,-13.37276 1.67548,12.11134 14.34496,-2.47245 7.92618,44.19776 -101.72387,19.57303 7.16646,44.53623 -52.57522,9.46966 -15.45632,-90.93037 -6.8088,1.39944 z";
+					var MAPHApath = "m 573.84831,303.30519 52.76971,-9.38805 5.62896,35.93913 94.93428,-13.37276 1.67548,12.11134 14.34496,-2.47245 7.92618,44.19776 -101.72387,19.57303 7.16646,44.53623 -52.57522,9.46966 -15.45632,-90.93037 -6.8088,1.39944 z";
 
-						var MAPHA = MAPHAg.append("path")
-							.attr("d", MAPHApath)
-							.attr("id", "MAPHA")
-							.attr("class", "MAPbuilding")
-							.style("fill", buildingColor)
-							.style("opacity", 1)
-							.on("click", function(){
-								CMtoThumb();
-							});
+					var MAPHA = MAPHAg.append("path")
+						.attr("d", MAPHApath)
+						.attr("id", "MAPHA")
+						.attr("class", "MAPbuilding")
+						.style("fill", buildingColor)
+						.style("opacity", 1)
+						.on("click", function(){
+							CMtoThumb();
+						});
 
 					var MAPHAlabel = MAPHAg.append("text")
 						.text("HA")
@@ -307,15 +307,15 @@ var svgGlobal = d3.select("body")
 
 					var MAPRCpath = "m 782.99179,243.9834 70.19128,46.5431 -10.09189,15.81562 3.16311,1.65688 -13.55624,18.97874 10.54377,7.8325 3.31374,12.95374 -9.03752,14.15876 -14.76124,3.31374 -8.43497,-5.12125 -11.44754,2.10876 3.31377,13.25499 -51.21246,10.2425 -12.6525,-62.65998 16.26749,-3.0125 19.58123,-29.22124 -18.37624,-11.89938 z";
 
-						var MAPRC = MAPRCg.append("path")
-							.attr("d", MAPRCpath)
-							.attr("id", "MAPRC")
-							.attr("class", "MAPbuilding")
-							.style("fill", buildingColor)
-							.style("opacity", 1)
-							.on("click", function(){
-								CMtoThumb();
-							});
+					var MAPRC = MAPRCg.append("path")
+						.attr("d", MAPRCpath)
+						.attr("id", "MAPRC")
+						.attr("class", "MAPbuilding")
+						.style("fill", buildingColor)
+						.style("opacity", 1)
+						.on("click", function(){
+							CMtoThumb();
+						});
 
 					var MAPRClabel = MAPRCg.append("text")
 						.text("RC")
@@ -719,8 +719,7 @@ var svgGlobal = d3.select("body")
 					var SFLB02Label = SFLBfloorOffset.append("text")
 						.attr("class", "text SFelement")
 						.text("2")
-						.attr("font-weight", "bold")
-						.attr("x", 367.30527)
+						.attr("x", 380)
 						.attr("y", 279.40375);
 
 		// floors
@@ -755,7 +754,7 @@ var svgGlobal = d3.select("body")
 				var BT115FloorRoom = BT1g.append("path")
 					.attr("id", "BT115floorRoom")
 					.attr("class", "floorElement floorRoom")
-					.attr("d", "m 995.21894,385.3672 9.49116,50.16733 65.7599,-11.86389 -8.1353,-49.82839 z")
+					.attr("d", "m 845.68079,736.56789 9.49698,50.19801 65.8001,-11.87114 -8.1403,-49.85887 z")
 					.style("fill", buildingColor)
 					.style("opacity", 0)
 					.style("stroke", "black")
@@ -765,6 +764,13 @@ var svgGlobal = d3.select("body")
 						groupFull("#BT115g", roomGFullMatrix)
 						groupDown("#BT1g", floorGThumbMatrix);
 					});
+
+				var BT115FloorRoomLabel = BT1g.append("text")
+					.attr("class", "text floorElement")
+					.text("115")
+					.style("font-size", "28px")
+					.attr("x", 854)
+					.attr("y", 766);
 
 			var BT2g = svg.append("g")
 				.attr("id", "BT2g")
@@ -807,6 +813,13 @@ var svgGlobal = d3.select("body")
 						groupFull("#BT253g", roomGFullMatrix)
 						groupDown("#BT2g", floorGThumbMatrix);
 					});
+
+				var BT253FloorRoomLabel = BT2g.append("text")
+					.attr("class", "text floorElement")
+					.text("253")
+					.style("font-size", "28px")
+					.attr("x", 1004)
+					.attr("y", 416);
 
 			var LB2g = svg.append("g")
 				.attr("id", "LB2g")
@@ -854,6 +867,13 @@ var svgGlobal = d3.select("body")
 						groupDown("#LB2g", floorGThumbMatrix);
 					});
 
+				var LB221FloorRoomLabel = LB2g.append("text")
+						.attr("class", "text floorElement")
+						.text("221")
+						.style("font-size", "28px")
+						.attr("x", 746)
+						.attr("y", 464);
+
 		// rooms
 	
 			var BT115g = svg.append("g")
@@ -875,6 +895,13 @@ var svgGlobal = d3.select("body")
 						fadeOutDeviceG();
 					});
 
+				var BT115label = BT115g.append("text")
+					.text("115")
+					.attr("class", "text roomElement")
+					.style("font-size", "76.77px")
+					.attr("x", 706)
+					.attr("y", 140);
+
 				var BT115 = BT115g.append("path")
 					.attr("id", "BT115")
 					.attr("class", "roomElement")
@@ -885,7 +912,7 @@ var svgGlobal = d3.select("body")
 					.attr("pointer-events", "none");
 
 				var BT115device = BT115g.append("g")
-					.attr("id", "roomIBT0115Dxxxxx")
+					.attr("id", "roomIBT0115D56806")
 					.attr("transform", BT115roomDeviceMatrix);
 
 					var BT115devicePath1 = BT115device.append("path")
@@ -901,7 +928,7 @@ var svgGlobal = d3.select("body")
 						.style("fill", "#999999")
 						.style("opacity", 0)
 						.on("click", function(){
-							deviceGfull("#IBT0115Dxxxxxg")
+							deviceGfull("#IBT0115D56806g")
 							deviceGfull("#bt115device")
 							groupDown("#BT115g", roomGThumbMatrix);
 						});
@@ -947,6 +974,13 @@ var svgGlobal = d3.select("body")
 					.style("opacity", 0)
 					.style("stroke-width", 1)
 					.attr("pointer-events", "none");
+
+				var BT253label = BT253g.append("text")
+					.text("253")
+					.attr("class", "text roomElement")
+					.style("font-size", "76.77px")
+					.attr("x", 706)
+					.attr("y", 140);
 
 					var BT253device = BT253g.append("g")
 						.attr("id", "roomIBT0253D56843")
@@ -1003,16 +1037,22 @@ var svgGlobal = d3.select("body")
 						fadeOutDeviceG();
 					});
 
+				var LB221label = LB221g.append("text")
+					.text("221")
+					.attr("class", "text roomElement")
+					.style("font-size", "76.77px")
+					.attr("x", 706)
+					.attr("y", 140);
+
 				var LB221 = LB221g.append("path")
 					.attr("id", "LB221")
 					.attr("class", "roomElement")
 					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
 					.style("fill", buildingColor)
-					.style("opacity", 0)
-					.style("stroke-width", 1);
+					.style("opacity", 0);
 
 					var LB221device = LB221g.append("g")
-						.attr("id", "roomILB0221Dxxxxx")
+						.attr("id", "roomILB0221D58404")
 						.attr("transform", LB221roomDeviceMatrix);	
 
 					var LB221devicePath1 = LB221device.append("path")
@@ -1028,7 +1068,7 @@ var svgGlobal = d3.select("body")
 						.style("fill", "#999999")
 						.style("opacity", 0)
 						.on("click", function(){
-							deviceGfull("#ILB0221Dxxxxxg")
+							deviceGfull("#ILB0221D58404g")
 							deviceGfull("#lb221device")
 							groupDown("#LB221g", roomGThumbMatrix);
 						});
@@ -1056,13 +1096,13 @@ var svgGlobal = d3.select("body")
 			  ["deviceElement stroked", "m 56.382192,195.78672 95.958128,0"]
 			];
 
-			var IBT0115Dxxxxxg = svg.append("g")
-				.attr("id", "IBT0115Dxxxxxg")
+			var IBT0115D56806g = svg.append("g")
+				.attr("id", "IBT0115D56806g")
 				.attr("class", "deviceG")
 				.attr("transform", deviceGThumbMatrix);
 
-				var IBT0115DxxxxxBG = IBT0115Dxxxxxg.append("rect")
-					.attr("id", "IBT0115DxxxxxBG")
+				var IBT0115D56806BG = IBT0115D56806g.append("rect")
+					.attr("id", "IBT0115D56806BG")
 					.attr("class", "deviceBackground background")
 					.attr("width", deviceBG.width)
 					.attr("height", deviceBG.height)
@@ -1078,19 +1118,19 @@ var svgGlobal = d3.select("body")
 						.style("opacity", 0)
 					  	.attr("class", function(d){return d[0]});
 
-				var IBT0115DxxxxxDevice = IBT0115Dxxxxxg.append("g")
+				var IBT0115D56806Device = IBT0115D56806g.append("g")
 					.attr("transform", deviceMatrix)
 		   			.append("use").attr("xlink:href","#bt115device");
 
-				IBT0115Dxxxxxg.append("text")
-					.text("I-BT0115-Dxxxxx")
+				IBT0115D56806g.append("text")
+					.text("I-BT0115-D56806")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
 					.attr("font-weight", "bold");
 
-				IBT0115Dxxxxxg.append("text")
+				IBT0115D56806g.append("text")
 					.text("7010 Windows 7")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
@@ -1098,10 +1138,10 @@ var svgGlobal = d3.select("body")
 					.attr("y", 390)
 					.attr("font-weight", "bold");
 
-				var IBT0115DxxxxxIssuesG = IBT0115Dxxxxxg.append("g")
-					.attr("id", "IBT0115DxxxxxIssuesG");
+				var IBT0115D56806IssuesG = IBT0115D56806g.append("g")
+					.attr("id", "IBT0115D56806IssuesG");
 
-					IBT0115DxxxxxIssuesG.append("text")
+					IBT0115D56806IssuesG.append("text")
 						.text("Issues:")
 						.attr("class", "text deviceElement")
 						.attr("id", "deviceIssuesText")
@@ -1110,16 +1150,16 @@ var svgGlobal = d3.select("body")
 						.attr("font-weight", "bold")
 						.attr("font-style", "italic");
 
-					var IBT0115DxxxxxIssue1g = IBT0115DxxxxxIssuesG.append("g")
-						.attr("id", "IBT0115DxxxxxIssue1g");
+					var IBT0115D56806Issue1g = IBT0115D56806IssuesG.append("g")
+						.attr("id", "IBT0115D56806Issue1g");
 
-						IBT0115DxxxxxIssue1g.append("text")
+						IBT0115D56806Issue1g.append("text")
 							.text("Inventoried?")
 							.attr("class", "text deviceElement")
 							.attr("x", 422.03802)
 							.attr("y", 510.35);
 
-						IBT0115DxxxxxIssue1g.append("rect")
+						IBT0115D56806Issue1g.append("rect")
 							.attr("class", "yesButton deviceElement button")
 							.attr("width", yesButtonD.width)
 							.attr("height", yesButtonD.height)
@@ -1130,12 +1170,12 @@ var svgGlobal = d3.select("body")
 								d3.select(this)
 									.style("opacity", 1)
 									.classed("chosenButton", true)
-								d3.select("#IBT0115DxxxxxIssue1g").select(".noButton")
+								d3.select("#IBT0115D56806Issue1g").select(".noButton")
 									.style("opacity", 0)
 									.classed("chosenButton", false);
 							});
 
-						IBT0115DxxxxxIssue1g.append("rect")
+						IBT0115D56806Issue1g.append("rect")
 							.attr("class", "noButton deviceElement button")
 							.attr("width", noButtonD.width)
 							.attr("height", noButtonD.height)
@@ -1146,19 +1186,19 @@ var svgGlobal = d3.select("body")
 								d3.select(this)
 									.style("opacity", 1)
 									.classed("chosenButton", true)
-								d3.select("#IBT0115DxxxxxIssue1g").select(".yesButton")
+								d3.select("#IBT0115D56806Issue1g").select(".yesButton")
 									.style("opacity", 0)
 									.classed("chosenButton", false);
 							});
 
-						IBT0115DxxxxxIssue1g.append("text")
+						IBT0115D56806Issue1g.append("text")
 							.text("Y")
 							.attr("class", "text deviceElement")
 							.attr("x", 900.37415)
 							.attr("y", 510.35)
 							.attr("font-weight", "bold");
 
-						IBT0115DxxxxxIssue1g.append("text")
+						IBT0115D56806Issue1g.append("text")
 							.text("N")
 							.attr("class", "text deviceElement")
 							.attr("x", 996.8728)
@@ -1275,13 +1315,13 @@ var svgGlobal = d3.select("body")
 							.attr("y", 509.66257)
 							.attr("font-weight", "bold");
 
-			var ILB0221Dxxxxxg = svg.append("g")
-				.attr("id", "ILB0221Dxxxxxg")
+			var ILB0221D58404g = svg.append("g")
+				.attr("id", "ILB0221D58404g")
 				.attr("class", "deviceG")
 				.attr("transform", deviceGThumbMatrix);
 
-				var ILB0221DxxxxxBG = ILB0221Dxxxxxg.append("rect")
-					.attr("id", "ILB0221DxxxxxBG")
+				var ILB0221D58404BG = ILB0221D58404g.append("rect")
+					.attr("id", "ILB0221D58404BG")
 					.attr("class", "deviceBackground background")
 					.attr("width", deviceBG.width)
 					.attr("height", deviceBG.height)
@@ -1297,19 +1337,19 @@ var svgGlobal = d3.select("body")
 						.style("opacity", 0)
 					  	.attr("class", function(d){return d[0]});
 
-				var ILB0221DxxxxxDevice = ILB0221Dxxxxxg.append("g")
+				var ILB0221D58404Device = ILB0221D58404g.append("g")
 					.attr("transform", deviceMatrix)
 		   			.append("use").attr("xlink:href","#lb221device");
 
-				ILB0221Dxxxxxg.append("text")
-					.text("I-LB0221-Dxxxxx")
+				ILB0221D58404g.append("text")
+					.text("I-LB0221-D58404")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceNameText")
 					.attr("x", 422.03802)
 					.attr("y", 338.13852)
 					.attr("font-weight", "bold");
 
-				ILB0221Dxxxxxg.append("text")
+				ILB0221D58404g.append("text")
 					.text("400 Windows 10")
 					.attr("class", "text deviceElement")
 					.attr("id", "deviceModelText")
@@ -1317,10 +1357,10 @@ var svgGlobal = d3.select("body")
 					.attr("y", 390)
 					.attr("font-weight", "bold");
 
-				var ILB0221DxxxxxIssuesG = ILB0221Dxxxxxg.append("g")
-					.attr("id", "ILB0221DxxxxxIssuesG");
+				var ILB0221D58404IssuesG = ILB0221D58404g.append("g")
+					.attr("id", "ILB0221D58404IssuesG");
 
-					ILB0221DxxxxxIssuesG.append("text")
+					ILB0221D58404IssuesG.append("text")
 						.text("Issues:")
 						.attr("class", "text deviceElement")
 						.attr("id", "deviceIssuesText")
@@ -1329,16 +1369,16 @@ var svgGlobal = d3.select("body")
 						.attr("font-weight", "bold")
 						.attr("font-style", "italic");
 
-					var ILB0221DxxxxxIssue1g = ILB0221DxxxxxIssuesG.append("g")
-						.attr("id", "ILB0221DxxxxxIssue1g");
+					var ILB0221D58404Issue1g = ILB0221D58404IssuesG.append("g")
+						.attr("id", "ILB0221D58404Issue1g");
 
-						ILB0221DxxxxxIssue1g.append("text")
+						ILB0221D58404Issue1g.append("text")
 							.text("Inventoried?")
 							.attr("class", "text deviceElement")
 							.attr("x", 422.03802)
 							.attr("y", 510.35);
 
-						ILB0221DxxxxxIssue1g.append("rect")
+						ILB0221D58404Issue1g.append("rect")
 							.attr("class", "yesButton deviceElement button")
 							.attr("width", yesButtonD.width)
 							.attr("height", yesButtonD.height)
@@ -1349,12 +1389,12 @@ var svgGlobal = d3.select("body")
 								d3.select(this)
 									.style("opacity", 1)
 									.classed("chosenButton", true)
-								d3.select("#ILB0221DxxxxxIssue1g").select(".noButton")
+								d3.select("#ILB0221D58404Issue1g").select(".noButton")
 									.style("opacity", 0)
 									.classed("chosenButton", false);
 							});
 
-						ILB0221DxxxxxIssue1g.append("rect")
+						ILB0221D58404Issue1g.append("rect")
 							.attr("class", "noButton deviceElement button")
 							.attr("width", noButtonD.width)
 							.attr("height", noButtonD.height)
@@ -1365,19 +1405,19 @@ var svgGlobal = d3.select("body")
 								d3.select(this)
 									.style("opacity", 1)
 									.classed("chosenButton", true)
-								d3.select("#ILB0221DxxxxxIssue1g").select(".yesButton")
+								d3.select("#ILB0221D58404Issue1g").select(".yesButton")
 									.style("opacity", 0)
 									.classed("chosenButton", false);
 							});
 
-						ILB0221DxxxxxIssue1g.append("text")
+						ILB0221D58404Issue1g.append("text")
 							.text("Y")
 							.attr("class", "text deviceElement")
 							.attr("x", 900.37415)
 							.attr("y", 510.35)
 							.attr("font-weight", "bold");
 
-						ILB0221DxxxxxIssue1g.append("text")
+						ILB0221D58404Issue1g.append("text")
 							.text("N")
 							.attr("class", "text deviceElement")
 							.attr("x", 996.8728)
