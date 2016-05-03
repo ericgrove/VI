@@ -74,7 +74,7 @@ var svgGlobal = d3.select("body")
 		// buttons
 
 			var buttonWidth = 79.786247,
-				buttonHeight2 = 72.551315,
+				buttonHeight = 72.551315,
 				buttonX = [874.55457, 973.55457],
 				buttonY = [458.74854],
 				buttonRy = 8.5249891;
@@ -82,7 +82,7 @@ var svgGlobal = d3.select("body")
 
 			var yesButtonD = {
 				width: buttonWidth,
-				height: buttonHeight2,
+				height: buttonHeight,
 				x: buttonX[0],
 				y: buttonY[0],
 				ry: buttonRy
@@ -90,7 +90,7 @@ var svgGlobal = d3.select("body")
 
 			var noButtonD = {
 				width: buttonWidth,
-				height: buttonHeight2,
+				height: buttonHeight,
 				x: buttonX[1],
 				y: buttonY[0],
 				ry: buttonRy
@@ -222,7 +222,7 @@ var svgGlobal = d3.select("body")
 				var deviceGfull = function(group){
 					groupFull(group, deviceGFullMatrix)
 					enableButtons(group)
-					d3.select(group).select(".chosenButton")
+					d3.select(group).selectAll(".chosenButton")
 						.transition().duration(Dur)
 						.style("opacity", 1)
 					};
@@ -244,7 +244,7 @@ var svgGlobal = d3.select("body")
 
 				var fadeOutDeviceG = function(){
 					groupMatrix(".deviceG", deviceGThumbMatrix)
-					fadeOut(".deviceBackground, .deviceElement");
+					fadeOut(".deviceBackground, .deviceElement, .button, .issueText");
 					};
 				
 		// Campus Map
@@ -1064,7 +1064,7 @@ var svgGlobal = d3.select("body")
 			  ["deviceElement filld", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z"],
 			  ["deviceElement stroked", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327"],
 			  ["deviceElement stroked", "m 56.382192,195.78672 95.958128,0"]
-			];
+				];
 
 			var IBT0115D56806g = svg.append("g")
 				.attr("id", "IBT0115D56806g")
@@ -1106,69 +1106,127 @@ var svgGlobal = d3.select("body")
 					.attr("x", 422.03802)
 					.attr("y", 390);
 
-				var IBT0115D56806IssuesG = IBT0115D56806g.append("g")
+				var IBT0115D56806issuesG = IBT0115D56806g.append("g")
 					.attr("id", "IBT0115D56806IssuesG");
 
-					IBT0115D56806IssuesG.append("text")
+					IBT0115D56806issuesG.append("text")
 						.text("Issues:")
 						.attr("class", "text deviceElement")
 						.attr("id", "deviceIssuesText")
-						.attr("x", 422.03802)
-						.attr("y", 462.13852)
+						.attr("x", 422)
+						.attr("y", 462)
 						.attr("font-style", "italic");
 
-					var IBT0115D56806Issue1g = IBT0115D56806IssuesG.append("g")
-						.attr("id", "IBT0115D56806Issue1g");
+				// issues
 
-						IBT0115D56806Issue1g.append("text")
-							.text("Inventoried?")
-							.attr("class", "text deviceElement")
-							.attr("x", 422.03802)
-							.attr("y", 510.35);
+						// issue master list
 
-						IBT0115D56806Issue1g.append("rect")
-							.attr("class", "yesButton deviceElement button")
-							.attr("width", yesButtonD.width)
-							.attr("height", yesButtonD.height)
-							.attr("x", yesButtonD.x)
-							.attr("y", yesButtonD.y)
-							.attr("ry", yesButtonD.ry)
-							.on("click", function(){
-								d3.select(this)
-									.style("opacity", 1)
-									.classed("chosenButton", true)
-								d3.select("#IBT0115D56806Issue1g").select(".noButton")
-									.style("opacity", 0)
-									.classed("chosenButton", false);
-							});
+						var issues = [
+								"Inventoried",
+								"Novell Configured",
+								"Browsers Configured",
+								"New DeepFreeze",
+								"New ESET",
+								"Purple Duplex Driver"
+							];
 
-						IBT0115D56806Issue1g.append("rect")
-							.attr("class", "noButton deviceElement button")
-							.attr("width", noButtonD.width)
-							.attr("height", noButtonD.height)
-							.attr("x", noButtonD.x)
-							.attr("y", noButtonD.y)
-							.attr("ry", noButtonD.ry)
-							.on("click", function(){
-								d3.select(this)
-									.style("opacity", 1)
-									.classed("chosenButton", true)
-								d3.select("#IBT0115D56806Issue1g").select(".yesButton")
-									.style("opacity", 0)
-									.classed("chosenButton", false);
-							});
+						var firstTextY = 510,
+							ySpace = 80,
+							firstButtonY = yesButtonD.y;
 
-						IBT0115D56806Issue1g.append("text")
-							.text("Y")
-							.attr("class", "text deviceElement")
-							.attr("x", 900.37415)
-							.attr("y", 510.35);
+						var ySpacerButton = function(d, i){
+								return firstButtonY + i * ySpace;
+							};
 
-						IBT0115D56806Issue1g.append("text")
-							.text("N")
-							.attr("class", "text deviceElement")
-							.attr("x", 996.8728)
-							.attr("y", 509.66257);
+						var ySpacerText = function(d, i){
+								return firstTextY + i * ySpace;
+							};			
+
+						// single device issues
+
+						var IBT0115D56806issues = [
+								{
+									issue: issues[0],
+									status: 1
+								},
+								{
+									issue: issues[1],
+									status: 1
+								},
+								{
+									issue: issues[2],
+									status: 0
+								},
+								{
+									issue: issues[3],
+									status: 2
+								}
+							];
+
+						// datajoin generate issue groups
+
+						var IBT0115D56806issuesGroups = IBT0115D56806issuesG.selectAll("g")
+						 	.data(IBT0115D56806issues);
+						 	
+						var gEnter = IBT0115D56806issuesGroups
+							.enter()
+						 	.append("g")
+						 		.attr("id", function(d,i){return "IBT0115D56806issue" + (i+1) + "g";});
+
+							gEnter.append("text")
+								.text(function(d){return d.issue;})
+								.attr("class", "text devicElement issueText")
+								.style("font-weight", "normal")
+								.attr("x", 422)
+								.attr("y", function(d,i){return ySpacerText(d,i);});
+
+							gEnter.append("rect")
+								.attr("class", "yesButton devicElement button")
+								.attr("width", yesButtonD.width)
+								.attr("height", yesButtonD.height)
+								.attr("x", yesButtonD.x)
+								.attr("y", function(d,i){
+									return ySpacerButton(d,i);
+								})
+								.attr("ry", yesButtonD.ry)
+								.on("click", function(d,i){
+									d3.select(this)
+										.style("opacity", 1)
+										.classed("chosenButton", true)
+									d3.select(this.parentNode).select(".noButton")
+										.style("opacity", 0)
+										.classed("chosenButton", false);
+								});
+
+							gEnter.append("text")
+								.text("Y")
+								.attr("class", "text deviceElement")
+								.attr("x", 900.4)
+								.attr("y", function(d,i){return ySpacerText(d,i)});					
+
+							gEnter.append("rect")
+								.attr("class", "noButton devicElement button")
+								.attr("width", noButtonD.width)
+								.attr("height", noButtonD.height)
+								.attr("x", noButtonD.x)
+								.attr("y", function(d,i){
+									return ySpacerButton(d,i);
+								})
+								.attr("ry", noButtonD.ry)
+								.on("click", function(){
+									d3.select(this)
+										.style("opacity", 1)
+										.classed("chosenButton", true)
+									d3.select(this.parentNode).select(".yesButton")
+										.style("opacity", 0)
+										.classed("chosenButton", false);
+								});
+
+							gEnter.append("text")
+								.text("N")
+								.attr("class", "text deviceElement")
+								.attr("x", 996.8728)
+								.attr("y", function(d,i){return ySpacerText(d,i);});
 
 			var IBT0253D56843g = svg.append("g")
 				.attr("id", "IBT0253D56843g")
