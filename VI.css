@@ -1,3 +1,6 @@
+.MAPbuilding {
+	fill: #ffa500;
+}
 .stroked {
 	stroke: black;
     stroke-width: 1;
@@ -30,4 +33,7 @@
 }
 .MAPlabel {
 	opacity: 1;
+}
+.SFelement {
+	opacity: 0;
 }
