@@ -568,7 +568,69 @@ var svgGlobal = d3.select("body")
 					.append("text")
 					.attr("class", "text SFelement")
 					.text(function(d,i){
-						return i+1;
+						return i;
+					})
+					.attr("x", function(d){
+						return d[2];
+					})
+					.attr("y", function(d){
+						return d[3];
+					});
+
+		// RC
+	
+			var SFRC00path = "m 620.45844,782.18905 101.39169,67.23177 -14.57778,22.84576 4.56911,2.39336 -19.58206,27.4149 15.23055,11.31409 4.78671,18.71175 -13.05475,20.45241 -21.32269,4.78672 -12.18436,-7.39767 -16.53604,3.04612 4.78675,19.1469 -73.97669,14.79534 -18.27661,-90.51269 23.49849,-4.35157 28.2852,-42.21024 -26.54458,-17.18874 z"
+			var SFRC01path = "m 537.30767,594.77438 101.39171,67.23178 -14.57779,22.84575 4.56913,2.39337 -19.58206,27.4149 15.23052,11.31409 4.78673,18.71175 -13.05476,20.45242 -21.32269,4.7867 -12.18436,-7.39766 -16.53603,3.04611 4.78675,19.14691 -73.97669,14.79535 -18.2766,-90.51271 23.49847,-4.35156 28.2852,-42.21025 -26.54458,-17.18872 z";
+			var SFRC02path = "m 620.45844,388.63553 101.39169,67.23177 -14.57778,22.84576 4.56911,2.39336 -19.58206,27.4149 15.23055,11.31409 4.78671,18.71175 -13.05475,20.45241 -21.32269,4.78672 -12.18436,-7.39767 -16.53604,3.04612 4.78675,19.1469 -73.97669,14.79534 -18.27661,-90.51269 23.49849,-4.35157 28.2852,-42.21024 -26.54458,-17.18874 z";
+			var SFRC03path = "m 537.30767,201.220853 101.39171,67.231787 -14.57779,22.84575 4.56913,2.39337 -19.58206,27.4149 15.23052,11.31409 4.78673,18.71175 -13.05476,20.45242 -21.32269,4.7867 -12.18436,-7.39766 -16.53603,3.04611 4.78675,19.14691 -73.97669,14.79535 -18.2766,-90.51271 23.49847,-4.35156 28.2852,-42.21025 -26.54458,-17.18872 z"
+		
+			var SFRCdata = [
+				[SFRC00path, "#RC0g", 628.5784, 910.01624],
+				[SFRC01path, "#RC1g", 547.84949, 719.29419],
+				[SFRC02path, "#RC2g", 628.5784, 516.46274],
+				[SFRC03path, "#RC3g", 547.84949, 326.74976]
+				];
+
+			var SFRCg = svg.append("g")
+				.attr("id", "SFRCg")
+				.attr("class", "SFg")
+				.attr("transform", SFgThumbMatrix);
+
+				var SFRCBG = SFRCg.append("rect")
+					.attr("class", "background SFbackground")
+					.attr("width", SFBG.width)
+					.attr("height", SFBG.height)
+					.attr("x", SFBG.x)
+					.attr("y", SFBG.y)
+					.attr("ry", SFBG.ry)
+					.on("click", function(){
+						groupFull("#SFRCg", SFgFullMatrix)
+						fadeOutFloorG()
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				SFRCg.selectAll("path")
+					.data(SFRCdata)
+					.enter()
+					.append("path")
+					.attr("class", "SFelement")
+					.attr("d", function(d){
+						return d[0];
+					})
+					.style("fill", buildingColor)
+					.on("click", function(d){
+						groupFull(d[1], floorGFullMatrix)
+						groupDown("#SFRCg", SFgThumbMatrix);
+					});
+
+				SFRCg.selectAll("text")
+					.data(SFRCdata)
+					.enter()
+					.append("text")
+					.attr("class", "text SFelement")
+					.text(function(d,i){
+						return i;
 					})
 					.attr("x", function(d){
 						return d[2];
@@ -1085,6 +1147,13 @@ var svgGlobal = d3.select("body")
 							return ySpacerButton(d,i);
 						})
 						.attr("ry", yesButtonD.ry)
+						// .style("opacity", function(d){
+						// 	if (d.status === 1){
+						// 		return 1;
+						// 	} else {
+						// 		return 0;
+						// 	}
+						// })
 						.on("click", function(d,i){
 							d3.select(this)
 								.style("opacity", 1)
