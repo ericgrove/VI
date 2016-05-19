@@ -457,6 +457,66 @@ var svgGlobal = d3.select("body")
 						return d[3];
 					});
 
+		// HA
+	
+			var SFHA01path = "m 466.94887,244.8003 76.64336,-13.635318 8.17557,52.198428 137.88369,-19.42276 2.43349,17.59066 20.8348,-3.59102 11.51207,64.19336 -147.74497,28.42811 10.40865,64.68495 -76.36088,13.75385 -22.44894,-132.06836 -9.88919,2.03256 z";
+			var SFHA02path = "m 466.94887,502.00778 76.64336,-13.63532 8.17557,52.19842 137.88369,-19.42276 2.43349,17.59067 20.8348,-3.59102 11.51207,64.19336 -147.74497,28.4281 10.40865,64.68496 -76.36088,13.75384 -22.44894,-132.06836 -9.88919,2.03256 z";
+			var SFHA03path = "m 466.94887,759.21525 76.64336,-13.63531 8.17557,52.19842 137.88369,-19.42276 2.43349,17.59066 20.8348,-3.59102 11.51207,64.19336 -147.74497,28.42811 10.40865,64.68495 -76.36088,13.75385 -22.44894,-132.06836 -9.88919,2.03256 z";
+		
+			var SFHAdata = [
+				[SFHA01path, "#HA1g", 578.70035, 858.0451],
+				[SFHA02path, "#HA2g", 578.70035, 600.83762],
+				[SFHA03path, "#HA3g", 578.70035, 343.63016]
+				];
+
+			var SFHAg = svg.append("g")
+				.attr("id", "SFHAg")
+				.attr("class", "SFg")
+				.attr("transform", SFgThumbMatrix);
+
+				var SFHABG = SFHAg.append("rect")
+					.attr("class", "background SFbackground")
+					.attr("width", SFBG.width)
+					.attr("height", SFBG.height)
+					.attr("x", SFBG.x)
+					.attr("y", SFBG.y)
+					.attr("ry", SFBG.ry)
+					.on("click", function(){
+						groupFull("#SFHAg", SFgFullMatrix)
+						fadeOutFloorG()
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				SFHAg.selectAll("path")
+					.data(SFHAdata)
+					.enter()
+					.append("path")
+					.attr("class", "SFelement")
+					.attr("d", function(d){
+						return d[0];
+					})
+					.style("fill", buildingColor)
+					.on("click", function(d){
+						groupFull(d[1], floorGFullMatrix)
+						groupDown("#SFHAg", SFgThumbMatrix);
+					});
+
+				SFHAg.selectAll("text")
+					.data(SFHAdata)
+					.enter()
+					.append("text")
+					.attr("class", "text SFelement")
+					.text(function(d,i){
+						return i+1;
+					})
+					.attr("x", function(d){
+						return d[2];
+					})
+					.attr("y", function(d){
+						return d[3];
+					});
+
 	// floors
 
 		// BT1
