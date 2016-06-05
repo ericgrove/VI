@@ -778,6 +778,67 @@ var svgGlobal = d3.select("body")
 						return d[3];
 					});
 
+		// GS
+	
+			var SFGS01path = "m 698.01906,738.18539 38.93723,166.844039 -33.49437,8.58291 12.76974,58.1965 -114.92762,26.16747 -10.67635,-49.82286 68.45416,-15.90985 -0.83738,-7.95495 -157.63297,36.00649 -38.51857,-167.68124 z";
+			var SFGS02path = "m 698.01906,471.69629 38.93723,166.844039 -33.49437,8.58291 12.76974,58.1965 -114.92762,26.16747 -10.67635,-49.82286 68.45416,-15.90985 -0.83738,-7.95495 -157.63297,36.00649 -38.51857,-167.68124 z";
+			var SFGS03path = "m 698.01906,199.919701 38.93723,166.844039 -33.49437,8.58291 12.76974,58.1965 -114.92762,26.16747 -10.67635,-49.82286 68.45416,-15.90985 -0.83738,-7.95495 -157.63297,36.00649 -38.51857,-167.68124 z";
+
+			var SFGSdata = [
+				[SFGS01path, "#GS1g", 372.20328+212, 712.90491+150],
+				[SFGS02path, "#GS2g", 372.20328+212, 452.76077+150],
+				[SFGS03path, "#GS3g", 372.20328+212, 182.04169+150]
+				];
+
+			var SFGSg = svg.append("g")
+				.attr("id", "SFGSg")
+				.attr("class", "SFg")
+				.attr("transform", SFgThumbMatrix);
+
+				var SFGSBG = SFGSg.append("rect")
+					.attr("class", "background SFbackground")
+					.attr("width", SFBG.width)
+					.attr("height", BG.height)
+					.attr("x", SFBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#SFGSg", SFgFullMatrix)
+						fadeOutFloorG()
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				SFGSg.selectAll("path")
+					.data(SFGSdata)
+					.enter()
+					.append("path")
+					.attr("class", "SFelement")
+					.attr("d", function(d){
+						return d[0];
+					})
+					.style("fill", buildingColor)
+					.on("click", function(d){
+						groupFull(d[1], floorGFullMatrix)
+						groupDown("#SFGSg", SFgThumbMatrix);
+					});
+
+				SFGSg.selectAll("text")
+					.data(SFGSdata)
+					.enter()
+					.append("text")
+					.attr("class", "text SFelement")
+					.text(function(d,i){
+						return i+1;
+					})
+					.attr("x", function(d){
+						return d[2];
+					})
+					.attr("y", function(d){
+						return d[3];
+					});
+
 	// floors
 
 		// BT1
@@ -880,6 +941,114 @@ var svgGlobal = d3.select("body")
 					.attr("x", 1004)
 					.attr("y", 416);
 
+		// BT3
+
+			var BT3g = svg.append("g")
+				.attr("id", "BT3g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var BT3BG = BT3g.append("rect")
+					.attr("id", "BT3BG")
+					.attr("class", "floorBackground background")
+					.attr("width", 746.11609)
+					.attr("height", 863.18353)
+					.attr("x", 492.79297)
+					.attr("y", 165.85027)
+					.attr("ry", 35.717941)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#BT3g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var BT3 = BT3g.append("path")
+					.attr("id", "BT3")
+					.attr("class", "floorElement")
+					.attr("d", "m 1024.9483,245.04354 4.7653,51.22695 23.8267,-4.76524 32.1655,191.80318 -67.9053,10.72195 19.6567,98.28416 30.9744,-2.97821 22.0397,123.30213 -25.0178,8.93486 2.9781,33.35716 70.884,-11.91331 25.0179,144.15024 -40.5052,9.53072 1.1913,33.95267 -150.10681,17.8699 -11.91332,-64.92729 -39.31356,4.76536 -4.76536,-11.91331 -201.33379,30.97451 -16.67868,-64.33156 -109.60153,27.99613 -15.48744,-45.86603 -5.36098,-39.90932 -2.97821,-26.80482 111.98444,-22.63509 -11.91331,-72.67092 215.6298,-47.65294 4.76518,20.84817 36.33549,-8.93492 -17.27428,-108.41055 -32.16551,5.95671 -33.35734,-184.65523 10.72189,-5.95665 -14.29578,-61.94891 z")
+					.style("fill", buildingColor)
+					.style("opacity", 0)
+					.attr("pointer-events", "none");
+
+				var BT353FloorRoom = BT3g.append("path")
+					.attr("id", "BT353floorRoom")
+					.attr("class", "floorElement floorRoom")
+					.attr("d", "m 995.21894,385.3672 9.49116,50.16733 65.7599,-11.86389 -8.1353,-49.82839 z")
+					.style("fill", roomColor)
+					.style("opacity", 0)
+					.style("stroke", "gray")
+					.style("stroke-width", 4)
+					.style("stroke-opacity", 0)
+					.on("click", function(){
+						groupFull("#BT353g", roomGFullMatrix)
+						groupDown("#BT3g", floorGThumbMatrix);
+					});
+
+				var BT353FloorRoomLabel = BT3g.append("text")
+					.attr("class", "text floorElement")
+					.text("253")
+					.style("fill", "white")
+					.style("font-size", "28px")
+					.attr("x", 1004)
+					.attr("y", 416);
+
+		// LB1
+
+			var LB1g = svg.append("g")
+				.attr("id", "LB1g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var LB1BG = LB1g.append("rect")
+					.attr("id", "LB1BG")
+					.attr("class", "floorBackground background")
+					.attr("width", 746.11609)
+					.attr("height", 863.18353)
+					.attr("x", 492.79297)
+					.attr("y", 165.85027)
+					.attr("ry", 35.717941)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#LB1g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var LB1parent = LB1g.append("g")
+					.attr("id", "LB1parent")
+					.attr("transform", "translate(212,150)");
+
+				var LB1 = LB1parent.append("path")
+					.attr("id", "LB1")
+					.attr("class", "floorElement")
+					.attr("d", "M 507.70557,69.845152 C 621.64553,44.195926 663.62888,163.95274 663.62888,163.95274 l 21.22041,91.33979 140.23878,-27.67876 35.05968,38.75015 6.45842,46.13131 17.52977,-3.69056 17.52981,63.66107 -14.76208,8.30364 19.37517,91.33962 -73.80987,21.2204 2.76797,16.60727 18.45239,-2.76797 35.98236,147.61977 -19.37505,8.30369 10.14885,49.82161 -234.34647,54.43471 11.99422,62.7385 -21.22028,7.38087 -15.6847,-59.97046 -94.10757,19.37513 -123.63164,-576.63969 c 0,0 -9.68352,-124.738476 104.25652,-150.387678 z")
+					.style("fill", buildingColor)
+					.style("opacity", 0)
+					.attr("pointer-events", "none");
+
+				// var LB121FloorRoom = LB1parent.append("path")
+				// 	.attr("id", "LB121floorRoom")
+				// 	.attr("class", "floorElement floorRoom")
+				// 	.attr("d", "m 524.2267,284.70008 9.55395,52.35317 66.1949,-12.3808 -8.18914,-51.99947 z")
+				// 	.style("fill", roomColor)
+				// 	.style("opacity", 0)
+				// 	.style("stroke", "gray")
+				// 	.style("stroke-width", 4)
+				// 	.style("stroke-opacity", 0)
+				// 	.on("click", function(){
+				// 		groupFull("#LB121g", roomGFullMatrix)
+				// 		groupDown("#LB1g", floorGThumbMatrix);
+				// 	});
+
+				// var LB121FloorRoomLabel = LB1g.append("text")
+				// 		.attr("class", "text floorElement")
+				// 		.text("221")
+				// 		.style("font-size", "28px")
+				// 		.style("fill", "white")
+				// 		.attr("x", 746)
+				// 		.attr("y", 464);
+
 		// LB2
 
 			var LB2g = svg.append("g")
@@ -963,6 +1132,87 @@ var svgGlobal = d3.select("body")
 					.attr("d", "m 790.23774,226.855376 369.24041,244.839454 -53.08824,83.19792 16.63943,8.71595 -71.31243,99.83746 55.46544,41.20278 17.43187,68.143 -47.54177,74.48201 -77.65133,17.4319 -44.37206,-26.94027 -60.21966,11.09313 17.43201,69.7277 -269.40258,53.88052 -66.55835,-329.62211 85.57498,-15.8472 103.00686,-153.71799 -96.668,-62.59662 z")
 					.style("fill", buildingColor);
 
+		// RC1
+
+			var RC1g = svg.append("g")
+				.attr("id", "RC1g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var RC1BG = RC1g.append("rect")
+					.attr("class", "background floorBackground")
+					.attr("width", floorBG.width)
+					.attr("height", BG.height)
+					.attr("x", floorBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#RC1g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var RC1 = RC1g.append("path")
+					.attr("id", "RC1")
+					.attr("class", "floorElement")
+					.attr("d", "m 790.23774,226.855376 369.24041,244.839454 -53.08824,83.19792 16.63943,8.71595 -71.31243,99.83746 55.46544,41.20278 17.43187,68.143 -47.54177,74.48201 -77.65133,17.4319 -44.37206,-26.94027 -60.21966,11.09313 17.43201,69.7277 -269.40258,53.88052 -66.55835,-329.62211 85.57498,-15.8472 103.00686,-153.71799 -96.668,-62.59662 z")
+					.style("fill", buildingColor);
+
+		// RC2
+
+			var RC2g = svg.append("g")
+				.attr("id", "RC2g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var RC2BG = RC2g.append("rect")
+					.attr("class", "background floorBackground")
+					.attr("width", floorBG.width)
+					.attr("height", BG.height)
+					.attr("x", floorBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#RC2g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var RC2 = RC2g.append("path")
+					.attr("id", "RC2")
+					.attr("class", "floorElement")
+					.attr("d", "m 790.23774,226.855376 369.24041,244.839454 -53.08824,83.19792 16.63943,8.71595 -71.31243,99.83746 55.46544,41.20278 17.43187,68.143 -47.54177,74.48201 -77.65133,17.4319 -44.37206,-26.94027 -60.21966,11.09313 17.43201,69.7277 -269.40258,53.88052 -66.55835,-329.62211 85.57498,-15.8472 103.00686,-153.71799 -96.668,-62.59662 z")
+					.style("fill", buildingColor);
+
+		// RC3
+
+			var RC3g = svg.append("g")
+				.attr("id", "RC3g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var RC3BG = RC3g.append("rect")
+					.attr("class", "background floorBackground")
+					.attr("width", floorBG.width)
+					.attr("height", BG.height)
+					.attr("x", floorBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#RC3g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var RC3 = RC3g.append("path")
+					.attr("id", "RC3")
+					.attr("class", "floorElement")
+					.attr("d", "m 790.23774,226.855376 369.24041,244.839454 -53.08824,83.19792 16.63943,8.71595 -71.31243,99.83746 55.46544,41.20278 17.43187,68.143 -47.54177,74.48201 -77.65133,17.4319 -44.37206,-26.94027 -60.21966,11.09313 17.43201,69.7277 -269.40258,53.88052 -66.55835,-329.62211 85.57498,-15.8472 103.00686,-153.71799 -96.668,-62.59662 z")
+					.style("fill", buildingColor);
+
 		// HA1
 
 			var HA1g = svg.append("g")
@@ -986,6 +1236,33 @@ var svgGlobal = d3.select("body")
 
 				var HA1 = HA1g.append("path")
 					.attr("id", "HA1")
+					.attr("class", "floorElement")
+					.attr("d", "m 559.71363,367.7994 185.28752,-32.96378 19.76468,126.19118 333.33776,-46.95508 5.88303,42.52595 50.36872,-8.68139 27.83077,155.18928 -357.1777,68.72574 25.16321,156.37774 -184.60461,33.25031 -54.27095,-319.27904 -23.9074,4.91377 z")
+					.style("fill", buildingColor);
+
+		// HA2
+
+			var HA2g = svg.append("g")
+				.attr("id", "HA2g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var HA2BG = HA2g.append("rect")
+					.attr("class", "background floorBackground")
+					.attr("width", floorBG.width)
+					.attr("height", BG.height)
+					.attr("x", floorBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#HA2g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var HA2 = HA2g.append("path")
+					.attr("id", "HA2")
 					.attr("class", "floorElement")
 					.attr("d", "m 559.71363,367.7994 185.28752,-32.96378 19.76468,126.19118 333.33776,-46.95508 5.88303,42.52595 50.36872,-8.68139 27.83077,155.18928 -357.1777,68.72574 25.16321,156.37774 -184.60461,33.25031 -54.27095,-319.27904 -23.9074,4.91377 z")
 					.style("fill", buildingColor);
@@ -1071,72 +1348,171 @@ var svgGlobal = d3.select("body")
 					.attr("d", "m 574.14476,466.79623 c 8.81121,-7.73684 26.41144,-16.51355 42.56454,-19.37526 6.07298,-1.07507 93.87652,-12.12788 93.87652,-12.12788 l -1.89284,-109.31114 148.82177,-5.92651 0.658,106.75951 327.93368,-14.81643 8.72498,197.13951 -69.71855,4.03329 5.92647,112.0273 -169.0702,13.00592 4.44449,124.4565 -259.6144,17.61492 -4.44474,-48.89367 -147.65125,4.63723 c 0,0 -7.7514,-315.56303 -7.6336,-318.40694 0.9932,-24.01879 18.26402,-43.07958 27.07513,-50.81635 z")
 					.style("fill", buildingColor);
 
+		// GS1
+
+			var GS1g = svg.append("g")
+				.attr("id", "GS1g")
+				.attr("class", "floorG")
+				.attr("transform", floorGThumbMatrix);
+
+				var GS1BG = GS1g.append("rect")
+					.attr("class", "background floorBackground")
+					.attr("width", floorBG.width)
+					.attr("height", BG.height)
+					.attr("x", floorBG.x)
+					.attr("y", BG.y)
+					.attr("ry", BG.ry)
+					.attr("pointer-events", "none")
+					.on("click", function(){
+						groupFull("#GS1g", floorGFullMatrix)
+						fadeOutRoomG()
+						fadeOutDeviceG();
+					});
+
+				var GS1 = GS1g.append("path")
+					.attr("id", "GS1")
+					.attr("class", "floorElement")
+					.attr("d", "m 875.1384,161.22079 87.1202,373.30561 -74.94205,19.20386 28.57168,130.21189 -257.1451,58.54848 L 634.85531,631.01434 788.01823,595.41681 786.14465,577.618 433.44836,658.1808 347.2649,283.002 Z")
+					.attr("transform", "translate(212,150)")
+					.style("fill", buildingColor);
+
 	// rooms
 	
-			var BT115g = svg.append("g")
-				.attr("id", "BT115g")
-				.attr("class", "roomG")
-				.attr("transform", roomGThumbMatrix);
+		var BT115g = svg.append("g")
+			.attr("id", "BT115g")
+			.attr("class", "roomG")
+			.attr("transform", roomGThumbMatrix);
 
-				var BT115BG = BT115g.append("rect")
-					.attr("id", "BT115BG")
-					.attr("class", "roomBackground background")
-					.attr("width", roomBG.width)
-					.attr("height", BG.height)
-					.attr("x", roomBG.x)
-					.attr("y", roomBG.y)
-					.attr("ry", BG.ry)
-					.attr("pointer-events", "none")
-					.on("click", function(){
-						groupFull("#BT115g", roomGFullMatrix)
-						fadeOutDeviceG();
-					});
+			var BT115BG = BT115g.append("rect")
+				.attr("id", "BT115BG")
+				.attr("class", "roomBackground background")
+				.attr("width", roomBG.width)
+				.attr("height", BG.height)
+				.attr("x", roomBG.x)
+				.attr("y", roomBG.y)
+				.attr("ry", BG.ry)
+				.attr("pointer-events", "none")
+				.on("click", function(){
+					groupFull("#BT115g", roomGFullMatrix)
+					fadeOutDeviceG();
+				});
 
-				var BT115label = BT115g.append("text")
-					.text("115")
-					.attr("class", "text roomElement")
-					.style("font-size", "76.77px")
-					.attr("x", 706)
-					.attr("y", 140);
+			var BT115label = BT115g.append("text")
+				.text("115")
+				.attr("class", "text roomElement")
+				.style("font-size", "76.77px")
+				.attr("x", 706)
+				.attr("y", 140);
 
-				var BT115 = BT115g.append("path")
-					.attr("id", "BT115")
+			var BT115 = BT115g.append("path")
+				.attr("id", "BT115")
+				.attr("class", "roomElement")
+				.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
+				.style("fill", buildingColor)
+				.style("opacity", 0)
+				.style("stroke-width", 1)
+				.attr("pointer-events", "none");
+
+			var BT115device = BT115g.append("g")
+				.attr("id", "roomIBT0115D56806")
+				.attr("transform", BT115roomDeviceMatrix);
+
+				var BT115devicePath1 = BT115device.append("path")
 					.attr("class", "roomElement")
-					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
+					.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
+				var BT115devicePath2 = BT115device.append("path")
+					.attr("class", "roomElement")
+					.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+					.style("fill", "#999999")
 					.style("opacity", 0)
-					.style("stroke-width", 1)
-					.attr("pointer-events", "none");
+					.on("click", function(){
+						deviceGfull("#IBT0115D56806g")
+						deviceGfull("#bt115device")
+						groupDown("#BT115g", roomGThumbMatrix);
+					});
+				var BT115devicePath3 = BT115device.append("path")
+					.attr("class", "roomElement")
+					.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
+				var BT115devicePath6 = BT115device.append("path")
+					.attr("class", "roomElement")
+					.attr("d", "m 56.382192,195.78672 95.958128,0")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
 
-				var BT115device = BT115g.append("g")
-					.attr("id", "roomIBT0115D56806")
-					.attr("transform", BT115roomDeviceMatrix);
+		var BT253g = svg.append("g")
+			.attr("id", "BT253g")
+			.attr("class", "roomG")
+			.attr("transform", roomGThumbMatrix);
 
-					var BT115devicePath1 = BT115device.append("path")
+			var BT253BG = BT253g.append("rect")
+				.attr("id", "BT253BG")
+				.attr("class", "roomBackground background")
+				.attr("width", roomBG.width)
+				.attr("height", BG.height)
+				.attr("x", roomBG.x)
+				.attr("y", roomBG.y)
+				.attr("ry", BG.ry)
+				.attr("pointer-events", "none")
+				.on("click", function(){
+					groupFull("#BT253g", roomGFullMatrix)
+					fadeOutDeviceG();
+				});
+
+			var BT253 = BT253g.append("path")
+				.attr("id", "BT253")
+				.attr("class", "roomElement")
+				.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
+				.style("fill", buildingColor)
+				.style("opacity", 0)
+				.style("stroke-width", 1)
+				.attr("pointer-events", "none");
+
+			var BT253label = BT253g.append("text")
+				.text("253")
+				.attr("class", "text roomElement")
+				.style("font-size", "76.77px")
+				.attr("x", 706)
+				.attr("y", 140);
+
+				var BT253device = BT253g.append("g")
+					.attr("id", "roomIBT0253D56843")
+					.attr("transform", BT253roomDeviceMatrix);
+
+					var BT253devicePath1 = BT253device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
 						.style("fill", "none")
 						.style("stroke", "black")
 						.style("stroke-opacity", 0)
 						.style("stroke-width", 1);
-					var BT115devicePath2 = BT115device.append("path")
+					var BT253devicePath2 = BT253device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
 						.style("fill", "#999999")
 						.style("opacity", 0)
 						.on("click", function(){
-							deviceGfull("#IBT0115D56806g")
-							deviceGfull("#bt115device")
-							groupDown("#BT115g", roomGThumbMatrix);
+							deviceGfull("#IBT0253D56843g")
+							deviceGfull("#bt253device")
+							groupDown("#BT253g", roomGThumbMatrix);
 						});
-					var BT115devicePath3 = BT115device.append("path")
+					var BT253devicePath3 = BT253device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
 						.style("fill", "none")
 						.style("stroke", "black")
 						.style("stroke-opacity", 0)
 						.style("stroke-width", 1);
-					var BT115devicePath6 = BT115device.append("path")
+					var BT253devicePath6 = BT253device.append("path")
 						.attr("class", "roomElement")
 						.attr("d", "m 56.382192,195.78672 95.958128,0")
 						.style("fill", "none")
@@ -1144,145 +1520,74 @@ var svgGlobal = d3.select("body")
 						.style("stroke-opacity", 0)
 						.style("stroke-width", 1);
 
-			var BT253g = svg.append("g")
-				.attr("id", "BT253g")
-				.attr("class", "roomG")
-				.attr("transform", roomGThumbMatrix);
+		var LB221g = svg.append("g")
+			.attr("id", "LB221g")
+			.attr("class", "roomG")
+			.attr("transform", roomGThumbMatrix);
 
-				var BT253BG = BT253g.append("rect")
-					.attr("id", "BT253BG")
-					.attr("class", "roomBackground background")
-					.attr("width", roomBG.width)
-					.attr("height", BG.height)
-					.attr("x", roomBG.x)
-					.attr("y", roomBG.y)
-					.attr("ry", BG.ry)
-					.attr("pointer-events", "none")
-					.on("click", function(){
-						groupFull("#BT253g", roomGFullMatrix)
-						fadeOutDeviceG();
-					});
+			var LB221BG = LB221g.append("rect")
+				.attr("id", "LB221BG")
+				.attr("class", "roomBackground background")
+				.attr("width", roomBG.width)
+				.attr("height", BG.height)
+				.attr("x", roomBG.x)
+				.attr("y", roomBG.y)
+				.attr("ry", BG.ry)
+				.attr("pointer-events", "none")
+				.on("click", function(){
+					groupFull("#LB221g", roomGFullMatrix)
+					fadeOutDeviceG();
+				});
 
-				var BT253 = BT253g.append("path")
-					.attr("id", "BT253")
+			var LB221label = LB221g.append("text")
+				.text("221")
+				.attr("class", "text roomElement")
+				.style("font-size", "76.77px")
+				.attr("x", 706)
+				.attr("y", 140);
+
+			var LB221 = LB221g.append("path")
+				.attr("id", "LB221")
+				.attr("class", "roomElement")
+				.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
+				.style("fill", buildingColor)
+				.style("opacity", 0);
+
+				var LB221device = LB221g.append("g")
+					.attr("id", "roomILB0221D58404")
+					.attr("transform", LB221roomDeviceMatrix);	
+
+				var LB221devicePath1 = LB221device.append("path")
 					.attr("class", "roomElement")
-					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
+					.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
+				var LB221devicePath2 = LB221device.append("path")
+					.attr("class", "roomElement")
+					.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
+					.style("fill", "#999999")
 					.style("opacity", 0)
-					.style("stroke-width", 1)
-					.attr("pointer-events", "none");
-
-				var BT253label = BT253g.append("text")
-					.text("253")
-					.attr("class", "text roomElement")
-					.style("font-size", "76.77px")
-					.attr("x", 706)
-					.attr("y", 140);
-
-					var BT253device = BT253g.append("g")
-						.attr("id", "roomIBT0253D56843")
-						.attr("transform", BT253roomDeviceMatrix);
-
-						var BT253devicePath1 = BT253device.append("path")
-							.attr("class", "roomElement")
-							.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
-						var BT253devicePath2 = BT253device.append("path")
-							.attr("class", "roomElement")
-							.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-							.style("fill", "#999999")
-							.style("opacity", 0)
-							.on("click", function(){
-								deviceGfull("#IBT0253D56843g")
-								deviceGfull("#bt253device")
-								groupDown("#BT253g", roomGThumbMatrix);
-							});
-						var BT253devicePath3 = BT253device.append("path")
-							.attr("class", "roomElement")
-							.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
-						var BT253devicePath6 = BT253device.append("path")
-							.attr("class", "roomElement")
-							.attr("d", "m 56.382192,195.78672 95.958128,0")
-							.style("fill", "none")
-							.style("stroke", "black")
-							.style("stroke-opacity", 0)
-							.style("stroke-width", 1);
-
-			var LB221g = svg.append("g")
-				.attr("id", "LB221g")
-				.attr("class", "roomG")
-				.attr("transform", roomGThumbMatrix);
-
-				var LB221BG = LB221g.append("rect")
-					.attr("id", "LB221BG")
-					.attr("class", "roomBackground background")
-					.attr("width", roomBG.width)
-					.attr("height", BG.height)
-					.attr("x", roomBG.x)
-					.attr("y", roomBG.y)
-					.attr("ry", BG.ry)
-					.attr("pointer-events", "none")
 					.on("click", function(){
-						groupFull("#LB221g", roomGFullMatrix)
-						fadeOutDeviceG();
+						deviceGfull("#ILB0221D58404g")
+						deviceGfull("#lb221device")
+						groupDown("#LB221g", roomGThumbMatrix);
 					});
-
-				var LB221label = LB221g.append("text")
-					.text("221")
-					.attr("class", "text roomElement")
-					.style("font-size", "76.77px")
-					.attr("x", 706)
-					.attr("y", 140);
-
-				var LB221 = LB221g.append("path")
-					.attr("id", "LB221")
+				var LB221devicePath3 = LB221device.append("path")
 					.attr("class", "roomElement")
-					.attr("d", "m 466.2171,273.85405 80.47767,425.38248 557.59633,-100.5971 -68.9812,-422.50848 z")
-					.style("fill", buildingColor)
-					.style("opacity", 0);
-
-					var LB221device = LB221g.append("g")
-						.attr("id", "roomILB0221D58404")
-						.attr("transform", LB221roomDeviceMatrix);	
-
-					var LB221devicePath1 = LB221device.append("path")
-						.attr("class", "roomElement")
-						.attr("d", "m 42.589392,125.25705 1.53339,326.61276 119.604678,0 78.20305,-67.4693 1.53339,-338.879904 -118.07127,1.5334 z")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
-					var LB221devicePath2 = LB221device.append("path")
-						.attr("class", "roomElement")
-						.attr("d", "m 44.996412,358.54448 c -10e-4,-50.81282 -0.45611,-123.78681 -1.01135,-162.16443 l -1.00951,-69.77748 41.67148,-39.391357 41.671478,-39.391347 57.86037,-0.46878 c 31.82321,-0.25783 57.89834,-0.46878 57.94472,-0.46878 0.0465,0 -0.20152,75.733884 -0.5509,168.297524 l -0.63526,168.29751 -39.08558,33.72705 -39.08557,33.72703 -58.88403,0 -58.884028,0 -0.002,-92.38694 z")
-						.style("fill", "#999999")
-						.style("opacity", 0)
-						.on("click", function(){
-							deviceGfull("#ILB0221D58404g")
-							deviceGfull("#lb221device")
-							groupDown("#LB221g", roomGThumbMatrix);
-						});
-					var LB221devicePath3 = LB221device.append("path")
-						.attr("class", "roomElement")
-						.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
-					var LB221devicePath6 = LB221device.append("path")
-						.attr("class", "roomElement")
-						.attr("d", "m 56.382192,195.78672 95.958128,0")
-						.style("fill", "none")
-						.style("stroke", "black")
-						.style("stroke-opacity", 0)
-						.style("stroke-width", 1);
+					.attr("d", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
+				var LB221devicePath6 = LB221device.append("path")
+					.attr("class", "roomElement")
+					.attr("d", "m 56.382192,195.78672 95.958128,0")
+					.style("fill", "none")
+					.style("stroke", "black")
+					.style("stroke-opacity", 0)
+					.style("stroke-width", 1);
 
 	// devices
 
@@ -1292,6 +1597,18 @@ var svgGlobal = d3.select("body")
 		  ["deviceElement stroked", "m 43.370912,125.85113 123.064958,2.16855 74.27268,-79.694044 -73.73054,79.151914 -2.71069,323.11327"],
 		  ["deviceElement stroked", "m 56.382192,195.78672 95.958128,0"]
 			];
+
+		var bt115deviceDef = svg.append('defs')
+				.append("g")
+				.attr("id","bt115device");
+
+				bt115deviceDef.selectAll("path")
+					.data(device_data)
+					.enter()
+					.append("path")
+					.attr("d", function(d){return d[1]})
+					.style("opacity", 0)
+				  	.attr("class", function(d){return d[0]});
 
 		var IBT0115D56806g = svg.append("g")
 			.attr("id", "IBT0115D56806g")
@@ -1306,19 +1623,7 @@ var svgGlobal = d3.select("body")
 				.attr("x", deviceBG.x)
 				.attr("y", deviceBG.y)
 				.attr("ry", deviceBG.ry);
-
-			var bt115deviceDef = svg.append('defs')
-				.append("g")
-				.attr("id","bt115device");
-
-				bt115deviceDef.selectAll("path")
-					.data(device_data)
-					.enter()
-					.append("path")
-					.attr("d", function(d){return d[1]})
-					.style("opacity", 0)
-				  	.attr("class", function(d){return d[0]});
-
+				
 			var IBT0115D56806Device = IBT0115D56806g.append("g")
 				.attr("transform", deviceMatrix)
 	   			.append("use").attr("xlink:href","#bt115device");
