@@ -7,14 +7,14 @@ var svgGlobal = d3.select("body")
 
 	var svg = svgGlobal.append("svg")
 		.attr("transform", "scale(0.75)")
-		.style("background", "white");
+		.style("background", "#000000");
 
 	// variables
 
 		var buildingColor = "#ffa500",
 			roomColor = "#005596";
 			deviceColor = 	"gray",
-			Dur = 			570,
+			Dur = 			331,
 			BGopacity = 	0.3,
 			thumbOpacity = 	0.5;
 
@@ -390,6 +390,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFBTg", SFgThumbMatrix);
@@ -449,6 +450,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFLBg", SFgThumbMatrix);
@@ -510,6 +512,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFHAg", SFgThumbMatrix);
@@ -571,6 +574,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFOHg", SFgThumbMatrix);
@@ -634,6 +638,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFRCg", SFgThumbMatrix);
@@ -693,6 +698,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFPEg", SFgThumbMatrix);
@@ -758,6 +764,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFMOg", SFgThumbMatrix);
@@ -819,6 +826,7 @@ var svgGlobal = d3.select("body")
 						return d[0];
 					})
 					.style("fill", buildingColor)
+					.attr("pointer-events", "none")
 					.on("click", function(d){
 						groupFull(d[1], floorGFullMatrix)
 						groupDown("#SFGSg", SFgThumbMatrix);
